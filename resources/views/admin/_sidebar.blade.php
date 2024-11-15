@@ -26,6 +26,10 @@
                 <a class="{{ request()->routeIs('admincategory') ? 'active-menu' : '' }}" href="{{route("admincategory")}}"><i class="fa fa-anchor "></i>Kategoriler</a>
             </li>
 
+            <li>
+                <a class="{{ request()->routeIs('adminemlaks') ? 'active-menu' : '' }}" href="{{route("adminemlaks")}}"><i class="fa fa-anchor "></i>İlanlar</a>
+            </li>
+
         </ul>
 
     </div>

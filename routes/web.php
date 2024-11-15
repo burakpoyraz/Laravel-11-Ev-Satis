@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\EmlakController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
@@ -42,6 +43,16 @@ Route::middleware("auth")->prefix("admin")->group(function () {
         Route::get("edit/{id}",[CategoryController::class,'edit'])->name('categoryedit');
         Route::post("update/{id}",[CategoryController::class,'update'])->name('categoryupdate');
         Route::get("delete/{id}",[CategoryController::class,'destroy'])->name('categorydelete');
+    });
+
+    //EMLAKS
+    Route::prefix("emlak")->group(function () {
+        Route::get('/',[EmlakController::class,'index'] )->name('adminemlaks');
+        Route::get("create",[EmlakController::class,'create'])->name('adminemlakcreate');
+        Route::post("store",[EmlakController::class,'store'])->name('adminemlakstore');
+        Route::get("edit/{id}",[EmlakController::class,'edit'])->name('adminemlakedit');
+        Route::post("update/{id}/{ozellik_id}",[EmlakController::class,'update'])->name('adminemlakupdate');
+        Route::get("delete/{id}",[EmlakController::class,'destroy'])->name('adminemlakdelete');
     });
 
 });
