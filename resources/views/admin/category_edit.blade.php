@@ -17,7 +17,7 @@
                         <div class="form-group">
                             <label>Parent</label>
                             <select class="form-control" name="parentid">
-                                <option value="0" @if($category->parentid == 0) selected @endif>Ana Kategori</option>
+
 
                                 @foreach($allcategories as $rs)
                                     <option value="{{ $rs->id }}" @if($category->parentid == $rs->id) selected @endif>{{ $rs->title }}</option>

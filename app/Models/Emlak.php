@@ -8,6 +8,20 @@ use Illuminate\Database\Eloquent\Model;
 class Emlak extends Model
 {
 
+    protected $table = 'emlaks';
+
+    protected $fillable = [
+        "id",
+        "parentid",
+        "title",
+        "keywords",
+        "description",
+        "image",
+        "slug",
+        "status"
+
+    ];
+
     use HasFactory;
 
 

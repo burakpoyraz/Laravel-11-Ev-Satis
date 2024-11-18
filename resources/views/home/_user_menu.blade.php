@@ -6,7 +6,7 @@
 
 <div class="col-sm-3">
     <div class="left-sidebar">
-        <h2>KATEGORİLER</h2>
+        <h2>HESAP AYARLARI</h2>
         <div class="panel-group category-products" id="accordian"><!--category-productsr-->
 
             @foreach($parentCategories as $rs)

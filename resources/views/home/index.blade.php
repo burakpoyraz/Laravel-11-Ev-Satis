@@ -1,13 +1,14 @@
+
 @extends("layouts.home")
 
-@section("title", "Ev Alım Satım & Emlak İlan Sitesi")
-@section("description")
-    Türkiye'nin en güvenilir ev alım satım platformu. Satılık daire, villa ve daha fazlası için binlerce güncel ilan burada!
-@endsection
+@php
+    $setting=\App\Http\Controllers\HomeController::settings()
+@endphp
 
-@section("keywords")
-    ev alım satım, emlak, satılık daire, villa, gayrimenkul, konut, daire, emlak ilanları
-@endsection
+@section("title",$setting->title)
+@section("description"){{$setting->description}}@endsection
+
+@section("keywords"){{$setting->keywords}}@endsection
 
 @section("content")
 

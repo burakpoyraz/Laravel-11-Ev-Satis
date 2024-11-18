@@ -12,7 +12,6 @@ class Arsa extends Model
     protected $fillable = [
         'id',
         'emlak_id',
-        'tapu_durumu',
         'ada',
         'parsel'
     ];

@@ -5,16 +5,42 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Str;
+use phpDocumentor\Reflection\Types\This;
 
 class CategoryController extends Controller
 {
+
+    public static function getParentsTree($category, $title)
+
+    {
+        if ($category->parentid == 0) {
+            return $title;
+        }
+        $parent = Category::find($category->parentid);
+        $title = $parent->title . " > " . $title;
+
+
+        return self::getParentsTree($parent, $title);
+
+    }
+
     /**
      * Display a listing of the resource.
      */
+
+
     public function index()
     {
 
-        $categories = Category::all();
+
+        if (Category::count() == 0) {
+            Artisan::call('db:seed', ['--class' => 'CategorySeeder']);
+        }
+
+        $categories = Category::where('parentid', '!=', 0)->with('children')->get();
+
         return view('admin.category', compact('categories'));
     }
 
@@ -24,9 +50,10 @@ class CategoryController extends Controller
     public function create()
     {
 
-        $categories = Category::select("id", "title")->where("parentid",0)->get();
+        $categories = Category::select("id", "title")->where("parentid", 0)->get();
 
-       return view('admin.category_add', compact('categories'));
+
+        return view('admin.category_add', compact('categories'));
     }
 
     /**
@@ -51,20 +78,20 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Category $category,$id)
+    public function edit(Category $category, $id)
     {
-        $category=Category::find($id);
-        $allcategories = Category::select("id", "title")->where("parentid",0)->get();
+        $category = Category::find($id);
+        $allcategories = Category::select("id", "title")->where("parentid", 0)->get();
 
-        return view('admin.category_edit', ['category'=>$category, 'allcategories'=>$allcategories]);
+        return view('admin.category_edit', ['category' => $category, 'allcategories' => $allcategories]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Category $category,$id)
+    public function update(Request $request, Category $category, $id)
     {
-        $category=Category::find($id);
+        $category = Category::find($id);
         $this->bilgileriAl($request, $category);
 
         return redirect()->route('admincategory');
@@ -73,7 +100,7 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Category $category,$id)
+    public function destroy(Category $category, $id)
     {
         Category::destroy($id);
 
@@ -91,7 +118,9 @@ class CategoryController extends Controller
         $category->title = $request->input('title');
         $category->keywords = $request->input('keywords');
         $category->description = $request->input('description');
-        $category->slug = $request->input('slug');
+        $category->slug = $request->input('slug') == ""
+            ? Str::slug($category->title)
+            : $request->input('slug');
         $category->status = $request->input('status');
         $category->save();
     }

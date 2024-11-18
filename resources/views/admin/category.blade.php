@@ -33,18 +33,14 @@
                             @foreach($categories as $rs)
                                 <tr>
                                     <td>{{$rs->id}}</td>
-                                    <td> @if($rs->parentid == 0)
-                                            Ana Kategori
-                                        @else
-                                            {{ $rs->parent->title ?? 'Belirtilmemiş' }}
-                                        @endif</td>
+                                    <td> {{\App\Http\Controllers\Admin\CategoryController::getParentsTree($rs,$rs->title)}}</td>
                                     <td>{{$rs->title}}</td>
 
 
                                     <td>{{$rs->status}}</td>
-                                    <td class="text-nowrap" style="width: 120px;"><a href="{{route("categoryedit",["id"=>$rs->id])}}">Düzenle</a> <a
-                                            href="{{route("categorydelete",["id"=>$rs->id])}}" style="margin-left: 25px"
-                                            onclick="return confirm('Bu kategoriyi silmek istediğinize emin misiniz?')">Sil</a></td>
+                                    <td class="text-nowrap" style="width: 120px;"><a href="{{route("categoryedit",["id"=>$rs->id])}}"  class="btn btn-sm btn-primary">  <i class="bi bi-pencil-square"></i></a> <a
+                                            href="{{route("categorydelete",["id"=>$rs->id])}}" style="margin-left: 25px"   class="btn btn-sm btn-danger"
+                                            onclick="return confirm('Bu kategoriyi silmek istediğinize emin misiniz?')"><i class="bi bi-trash"></i></a></td>
 
 
                                 </tr>

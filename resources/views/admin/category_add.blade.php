@@ -16,8 +16,8 @@
                         @csrf
                         <div class="form-group">
                             <label>Parent</label>
-                            <select class="form-control" name="parentid">
-                                <option value="0">Ana Kategori</option>
+                            <select class="form-control" name="parentid" required>
+                                <option value="" disabled selected>Kategori Seçiniz</option>
                                 @foreach($categories as $rs)
                                 <option value="{{$rs->id}}">{{$rs->title}}</option>
                                 @endforeach

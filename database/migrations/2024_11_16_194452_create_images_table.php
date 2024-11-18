@@ -11,13 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('arsas', function (Blueprint $table) {
+        Schema::create('images', function (Blueprint $table) {
             $table->id()->autoIncrement();
-
             $table->foreignId('emlak_id');
-            $table->integer('ada')->nullable();
-            $table->integer('parsel')->nullable();
-
+            $table->string('title',150);
+            $table->string('image',100)->nullable();
             $table->timestamps();
         });
     }
@@ -27,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('arsas');
+        Schema::dropIfExists('images');
     }
 };

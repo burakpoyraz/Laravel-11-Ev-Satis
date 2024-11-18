@@ -1,11 +1,15 @@
+@php
+    $setting=\App\Http\Controllers\HomeController::settings()
+@endphp
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
+    <meta name="description" content="@yield("description")">
+    <meta name="keywords" content="@yield("keywords")">
     <meta name="author" content="Burak POYRAZ">
-    <title>Home | E-Shopper</title>
+    <title>@yield("title")</title>
     <link href="{{asset("assets")}}/css/bootstrap.min.css" rel="stylesheet">
     <link href="{{asset("assets")}}/css/font-awesome.min.css" rel="stylesheet">
     <link href="{{asset("assets")}}/css/prettyPhoto.css" rel="stylesheet">

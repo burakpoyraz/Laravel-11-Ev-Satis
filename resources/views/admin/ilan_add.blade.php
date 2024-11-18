@@ -2,6 +2,18 @@
 
 @section("title","Admin Paneli - Kategoriler    ")
 
+@section("header_js")
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    <!-- include summernote css/js -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote.min.js"></script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery-steps@1.1.0/build/jquery.steps.min.js"></script>
+
+@endsection
+
 @section("content")
     <div class="row">
         <div class="col-md-12">
@@ -12,7 +24,7 @@
                     İLAN EKLE
                 </div>
                 <div class="panel-body">
-                    <form role="form" action="{{route("adminemlakstore")}}" method="post">
+                    <form role="form" action="{{route("adminemlakstore")}}" method="post" enctype="multipart/form-data">
                         @csrf
 
 
@@ -23,10 +35,11 @@
 
                         <div class="form-group">
                             <label>Kategori</label>
-                            <select class="form-control" name="categoryid">
-                                <option value="0">Ana Kategori</option>
+                            <select class="form-control" name="categoryid" required>
+                                <option value="" disabled selected>Kategori seçiniz</option>
                                 @foreach($categories as $rs)
-                                    <option value="{{$rs->id}}">{{$rs->title}}</option>
+
+                                    <option value="{{$rs->id}}" data-parentid="{{$rs->parentid}}">{{\App\Http\Controllers\Admin\CategoryController::getParentsTree($rs,$rs->title)}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -44,17 +57,23 @@
 
                             <div class="form-group">
                                 <label>Binanın Kat Sayısı</label>
-                                <input class="form-control" name="binanin_kat_sayisi" type="text">
+                                <input class="form-control" name="binanin_kat_sayisi" type="number">
                             </div>
 
                             <div class="form-group">
                                 <label>Binanın Yaşı</label>
-                                <input class="form-control" name="binanin_yasi" type="text">
+                                <input class="form-control" name="binanin_yasi" type="number">
                             </div>
 
                             <div class="form-group">
                                 <label>isinma_tipi</label>
-                                <input class="form-control" name="isinma_tipi" type="text">
+                                <select class="form-control" name="isinma_tipi">
+                                    <option value="" disabled selected>Isınma Tipini Seçiniz</option>
+                                    @foreach($isinma_tipleri as $tipi)
+                                    <option value="{{$tipi}}">{{$tipi}}</option>
+                                    @endforeach
+
+                                </select>
                             </div>
                         </div>
 
@@ -62,52 +81,50 @@
 
                           <!--ARSA-->
                         <div class="arsa-alanlari" style="display: none;">
-                            <div class="form-group">
-                                <label>Tapu Durumu</label>
-                                <input class="form-control" name="tapu_durumu" type="text">
-                            </div>
+
+
 
                             <div class="form-group">
                                 <label>Ada</label>
-                                <input class="form-control" name="ada" type="text">
+                                <input class="form-control" name="ada" type="number">
                             </div>
 
                             <div class="form-group">
                                 <label>Parsel</label>
-                                <input class="form-control" name="parsel" type="text">
+                                <input class="form-control" name="parsel" type="number">
                             </div>
                         </div>
 
                         <!-- TURİSTİK TESİS -->
                         <div class="turistik-tesis-alanlari" style="display: none;">
                             <div class="form-group">
-                                <label>Tapu Durumu</label>
-                                <input class="form-control" name="kapali_alan_metrekare" type="text">
+                                <label>Kapalı Alan Metrekare</label>
+                                <input class="form-control" name="kapali_alan_metrekare" type="number">
                             </div>
 
                             <div class="form-group">
-                                <label>Ada</label>
-                                <input class="form-control" name="acik_alan_metrekare" type="text">
+                                <label>Açık Alan Metrekare</label>
+                                <input class="form-control" name="acik_alan_metrekare" type="number">
                             </div>
 
                             <div class="form-group">
-                                <label>Parsel</label>
+                                <label>Oda Sayisi Turistik</label>
                                 <input class="form-control" name="oda_sayisi_turistik" type="text">
                             </div>
 
                             <div class="form-group">
                                 <label>Binanın Kat Sayısı</label>
-                                <input class="form-control" name="binanin_kat_sayisi_turistik" type="text">
+                                <input class="form-control" name="binanin_kat_sayisi_turistik" type="number">
                             </div>
 
                             <div class="form-group">
                                 <label>Binanın Yaşı</label>
-                                <input class="form-control" name="binanin_yasi_turistik" type="text">
+                                <input class="form-control" name="binanin_yasi_turistik" type="number">
                             </div>
 
                             <div class="form-group">
                                 <label>Yatak Sayısı</label>
-                                <input class="form-control" name="yatak_Sayisi" type="text">
+                                <input class="form-control" name="yatak_Sayisi" type="number">
                             </div>
 
 
@@ -115,17 +132,17 @@
 
                         <div class="form-group">
                             <label>Metrekare Toplam Alan</label>
-                            <input class="form-control" name="metrekare_toplam_alan" type="text">
+                            <input class="form-control" name="metrekare_toplam_alan" type="number">
                         </div>
 
                         <div class="form-group">
                             <label>Fiyatı</label>
-                            <input class="form-control" name="fiyati" type="text">
+                            <input class="form-control" name="fiyati" type="number">
                         </div>
 
                         <div class="form-group">
                             <label>Resim</label>
-                            <input class="form-control" name="description" type="text">
+                            <input class="form-control" name="image" type="file">
                         </div>
 
                         <div class="form-group">
@@ -135,17 +152,43 @@
 
                         <div class="form-group">
                             <label>Şehir</label>
-                            <input class="form-control" name="city" type="text">
+                            <select class="form-control" name="city" required>
+                                <option value="" disabled selected>Şehir seçiniz</option>
+                                @foreach($iller as $il)
+                                <option value="{{$il}}">{{$il}}</option>
+
+                                @endforeach
+                            </select>
                         </div>
 
                         <div class="form-group">
                             <label>Detay</label>
-                            <input class="form-control" name="detail" type="text">
+
+                            <textarea id="summernote" name="detail"></textarea>
                         </div>
 
                         <div class="form-group">
                             <label>Krediye Uygunluk</label>
-                            <input class="form-control" name="krediye_uygunluk" type="text">
+                            <select class="form-control" name="krediye_uygunluk">
+                                <option value="" disabled selected>Krediye uygunluk seçiniz</option>
+                                <option value="Evet">Evet</option>
+                                <option value="Hayır">Hayır</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Tapu Durumu</label>
+                            <select class="form-control" name="tapu_durumu" required>
+                                <option value="" disabled selected>Tapu durumu seçiniz</option>
+                                <option value="Kat Mülkiyetli">Kat Mülkiyetli</option>
+                                <option value="Kat İrtifaklı">Kat İrtifaklı</option>
+                                <option value="Hisseli Tapu">Hisseli Tapu</option>
+                                <option value="Müstakil Tapulu">Müstakil Tapulu</option>
+                                <option value="Arsa Tapulu">Arsa Tapulu</option>
+                                <option value="Kooperatif Hisseli Tapu">Kooperatif Hisseli Tapu</option>
+                                <option value="Yurt Dışı Tapulu">Yurt Dışı Tapulu</option>
+                                <option value="Tapu Kaydı Yok">Tapu Kaydı Yok</option>
+                            </select>
                         </div>
 
                         <div class="form-group">
@@ -191,28 +234,42 @@
     <script>
 
         document.querySelector('select[name="categoryid"]').addEventListener('change', function () {
-            let kategoriId = this.value;
+            let selectedOption = this.options[this.selectedIndex];
+            let categoryId = this.value;
+            let parentId = selectedOption.getAttribute('data-parentid'); // parentid'yi alın.
 
-            console.log(kategoriId)
+            console.log('Kategori ID:', categoryId);
+            console.log('Parent ID:', parentId);
+
             document.querySelector('.konut-alanlari').style.display = 'none';
             document.querySelector('.arsa-alanlari').style.display = 'none';
             document.querySelector('.turistik-tesis-alanlari').style.display = 'none';
 
 
-            switch (kategoriId) {
-                case '15': // Konut
-                case '16': //İşyeri
-                case '19': //Bina
-                case '20': //Devremülk
+            switch (parentId) {
+                case '1': // Konut
+                case '2': //İşyeri
+                case '4': //Bina
+                case '5': //Devremülk
                     document.querySelector('.konut-alanlari').style.display = 'block';
                     break;
-                case '17': // Arsa
+                case '3': // Arsa
                     document.querySelector('.arsa-alanlari').style.display = 'block';
                     break;
-                case '18': // Turistik Tesis
+                case '6': // Turistik Tesis
                     document.querySelector('.turistik-tesis-alanlari').style.display = 'block';
                     break;
                     }
+
+                    if (categoryId==3){
+                        document.querySelector('.arsa-alanlari').style.display = 'block';
+                    }
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('#summernote').summernote();
         });
     </script>
 

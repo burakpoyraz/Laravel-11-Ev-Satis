@@ -24,6 +24,7 @@ return new class extends Migration
             $table->integer('metrekare_toplam_alan')->nullable();
             $table->float('fiyati')->nullable();
             $table->string('krediye_uygunluk',5)->nullable()->default("Evet");
+            $table->string('tapu_durumu',20)->nullable();
             $table->foreignId('userid');
             $table->string('slug',100)->nullable();
             $table->string('status',5)->nullable()->default('False');
