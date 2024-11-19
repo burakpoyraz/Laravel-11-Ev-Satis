@@ -41,12 +41,6 @@
                     <h4 class="panel-title"><a href="{{route("logout")}}">Çıkış</a></h4>
                 </div>
             </div>
-
-
-
-
-
-
-        </div><!--/category-products-->
+        </div>
     </div>
 </div>

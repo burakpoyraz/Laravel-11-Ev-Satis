@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\EmlakController;
 use App\Http\Controllers\Admin\ImageController;
+use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -29,6 +30,7 @@ Route::get("references",[HomeController::class,"references"])->name("references"
 Route::get("fag",[HomeController::class,"fag"])->name("fag");
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::get("logout",[HomeController::class,"logout"])->name('logout');
+Route::post("sendmessage",[HomeController::class,"sendmessage"])->name('sendmessage');
 
 Route::prefix("admin")->group(function () {
     Route::get("login", [AdminHomeController::class, 'login'])->name('adminlogin');
@@ -69,6 +71,13 @@ Route::middleware("auth")->prefix("admin")->group(function () {
         Route::get("/", [SettingController::class, 'index'])->name('adminsetting');
         Route::post("update", [SettingController::class, 'update'])->name('adminsettingupdate');
 
+
+    });
+    Route::prefix("messages")->group(function () {
+        Route::get("/", [MessageController::class, 'index'])->name('adminmessages');
+        Route::get("edit/{id}", [MessageController::class, 'edit'])->name('adminmessageedit');
+        Route::post("update/{id}", [MessageController::class, 'update'])->name('adminmessageupdate');
+        Route::get("delete/{id}", [MessageController::class, 'destroy'])->name('adminmessagedelete');
 
     });
 
