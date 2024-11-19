@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Emlak;
 use App\Models\Message;
 use App\Models\Setting;
 use Illuminate\Http\Request;
@@ -23,10 +24,10 @@ class HomeController extends Controller
 
     public function index(){
 
+        $slider=Emlak::take(3)->get();
 
 
-
-        return view('home.index');
+        return view('home.index',compact('slider'));
     }
 
     public function aboutus(){
@@ -76,4 +77,6 @@ class HomeController extends Controller
 
 
     }
+
+
 }
