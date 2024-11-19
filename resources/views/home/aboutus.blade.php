@@ -16,15 +16,11 @@
         <div class="container">
             <div class="row">
 
-                @include("home._user_menu")
 
-                <div class="col-sm-9">
-                    <div class="blog-post-area">
-                        <h2 class="title text-center">Hesabım</h2>
-                        <div class="single-blog-post">
-                           @include("profile.show")
-                        </div>
-                    </div>
+
+                <div class="col-sm-12">
+                    <h2 class="title text-center">Hakkımızda </h2>
+                   {!!$setting->aboutus  !!}
                 </div>
 
             </div>

@@ -30,15 +30,18 @@ class HomeController extends Controller
 
     public function aboutus(){
 
+
+        return view('home.aboutus');
+
     }
     public function references(){
-
+        return view('home.references');
     }
     public function fag(){
-
+        return view('home.fag');
     }
     public function contact(){
-
+        return view('home.contact');
     }
 
     public function logout(Request $request){

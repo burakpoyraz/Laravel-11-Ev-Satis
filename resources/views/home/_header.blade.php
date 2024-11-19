@@ -39,13 +39,13 @@
                     <div class="shop-menu pull-right">
                         <ul class="nav navbar-nav">
                             @auth
-                                <li><a href="{{ route('userhome') }}"><i class="fa fa-user"></i> Account</a></li>
+                                <li><a href="{{ route('userhome') }}"><i class="fa fa-user"></i> Hesap</a></li>
                                 <li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
                                 <li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
                                 <li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-                                <li><a href="{{ route('logout') }}"><i class="fa fa-lock"></i> Logout</a></li>
+                                <li><a href="{{ route('logout') }}"><i class="fa fa-lock"></i> Çıkış</a></li>
                             @else
-                                <li><a href="{{ route('login') }}"><i class="fa fa-lock"></i> Login</a></li>
+                                <li><a href="{{ route('login') }}"><i class="fa fa-lock"></i> Giriş</a></li>
                                 <li><a href="{{ route('register') }}"><i class="fa fa-user"></i> Register</a></li>
                             @endauth
                         </ul>

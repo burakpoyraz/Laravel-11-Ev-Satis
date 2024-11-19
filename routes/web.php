@@ -82,4 +82,8 @@ Route::middleware("auth")->prefix("myuser")->group(function () {
 
 });
 
+Route::middleware("auth")->prefix("user")->group(function () {
+    Route::get("/profile", [UserController::class, 'index'])->name('userprofile');
+});
+
 
