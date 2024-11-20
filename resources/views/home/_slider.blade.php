@@ -17,7 +17,7 @@
                                 <h1>{{$emlak->kategori->title}}</h1>
                                 <h4>{{$emlak->city}}  &nbsp;&nbsp;|&nbsp;&nbsp;  {{$emlak->metrekare_toplam_alan}} m² &nbsp;&nbsp;|&nbsp;&nbsp; {{ number_format($emlak->fiyati, 0, ',', '.') }} TL</h4>
                                 <p>{{$emlak->title}}</p>
-                                <button type="button" class="btn btn-default get">İncele</button>
+                                <a href="{{route("ilan",["id"=>$emlak->id,"slug"=>$emlak->slug])}}" type="button" class="btn btn-default get">İncele</a>
                             </div>
                             <div class="col-sm-6">
                                 <img src="{{\Illuminate\Support\Facades\Storage::url($emlak->image)}}" style="height: 441px" class="girl img-responsive" alt="" />

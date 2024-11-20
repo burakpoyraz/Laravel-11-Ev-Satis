@@ -116,8 +116,8 @@ class CategoryController extends Controller
     {
         $category->parentid = $request->input('parentid');
         $category->title = $request->input('title');
-        $category->keywords = $request->input('keywords');
-        $category->description = $request->input('description');
+        $category->keywords = $request->input('keywords')==""?$category->title . " ilanları":$request->input('keywords');
+        $category->description = $request->input('description')==""?$category->title . " açıklaması":$request->input('description');;
         $category->slug = $request->input('slug') == ""
             ? Str::slug($category->title)
             : $request->input('slug');

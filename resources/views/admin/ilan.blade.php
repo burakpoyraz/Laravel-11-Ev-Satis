@@ -41,7 +41,7 @@
                                     <td>{{$rs->id}}</td>
                                     <td>{{$rs->title}}</td>
                                     <td>{{\App\Http\Controllers\Admin\CategoryController::getParentsTree($rs->kategori,$rs->kategori->title)}}</td>
-                                    <td>{{$rs->fiyati}}</td>
+                                    <td class="text-nowrap">{{ number_format($rs->fiyati, 0, ',', '.') }} TL</td>
                                     <td>{{$rs->address}}</td>
                                     <td>{{$rs->city}}</td>
                                     <td>{{$rs->kullanici->name}}</td>
@@ -59,9 +59,9 @@
                                     </td>
                                     <td>{{$rs->status}}</td>
 
-                                    <td class="text-nowrap" style="width: 120px;"><a href="{{route("adminemlakedit",["id"=>$rs->id])}}"  class="btn btn-sm btn-primary" > <i class="bi bi-pencil-square" ></i></a>
+                                    <td class="text-nowrap" style="width: 60px;"><a href="{{route("adminemlakedit",["id"=>$rs->id])}}"  class="btn btn-sm btn-primary" > <i class="bi bi-pencil-square" ></i></a>
                                         <a
-                                            href="{{route("adminemlakdelete",["id"=>$rs->id])}}" style="margin-left: 25px" class="btn btn-sm btn-danger"
+                                            href="{{route("adminemlakdelete",["id"=>$rs->id])}}" style="margin-left: 2px" class="btn btn-sm btn-danger"
                                             onclick="return confirm('Bu ilanı silmek istediğinize emin misiniz?')"><i class="bi bi-trash"></i></a></td>
                                 </tr>
                             @endforeach

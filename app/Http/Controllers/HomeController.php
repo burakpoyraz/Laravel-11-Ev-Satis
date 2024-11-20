@@ -24,7 +24,7 @@ class HomeController extends Controller
 
     public function index(){
 
-        $slider=Emlak::take(3)->get();
+        $slider=Emlak::inRandomOrder()->take(4)->get();
 
 
         return view('home.index',compact('slider'));
@@ -77,6 +77,33 @@ class HomeController extends Controller
 
 
     }
+    public function ilan($id,$slug){
+
+
+        $emlak=Emlak::find($id);
+
+        dd($emlak);
+
+    }
+
+    public function categoryilanlar($id,$slug){
+
+        $category=Category::select("id","title")->where("id",$id)->first();
+
+        $ilanlar=Emlak::where("categoryid",$id)->get();
+
+        $sayisi=count($ilanlar);
+
+
+
+
+
+        return view('home.category_ilan',compact('id','slug','category','ilanlar','sayisi'));
+
+
+
+    }
+
 
 
 }

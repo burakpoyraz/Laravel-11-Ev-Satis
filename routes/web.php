@@ -31,6 +31,8 @@ Route::get("fag",[HomeController::class,"fag"])->name("fag");
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::get("logout",[HomeController::class,"logout"])->name('logout');
 Route::post("sendmessage",[HomeController::class,"sendmessage"])->name('sendmessage');
+Route::get("/ilan/{id}/{slug}",[HomeController::class,"ilan"])->name('ilan');
+Route::get("/kategoriler/{id}/{slug}",[HomeController::class,"categoryilanlar"])->name('categoryilanlar');
 
 Route::prefix("admin")->group(function () {
     Route::get("login", [AdminHomeController::class, 'login'])->name('adminlogin');

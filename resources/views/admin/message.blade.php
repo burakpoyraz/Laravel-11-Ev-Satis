@@ -30,6 +30,7 @@
                                 <th>İsim</th>
                                 <th>Konu</th>
                                 <th>Durum</th>
+                                <th>Geliş Tarihi</th>
                                 <th>Not</th>
                                 <th></th>
                             </tr>
@@ -49,6 +50,7 @@
                                             <i class="bi bi-envelope-open"></i> Okundu
                                         @endif
                                     </td>
+                                    <td>{{ \Carbon\Carbon::parse($rs->created_at)->format('d.m.Y  |  H:i') }}</td>
                                     <td>{{$rs->note}}</td>
                                     <td class="text-nowrap" style="width: 120px;"><a
                                             href="{{route("adminmessageedit",["id"=>$rs->id])}}"

@@ -33,7 +33,7 @@
 
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h4 class="panel-title"><a href="#">{{$rs->title}}</a></h4>
+                            <h4 class="panel-title"><a href="{{route("categoryilanlar",["id"=>$rs->id,"slug"=>$rs->slug])}}">{{$rs->title}}</a></h4>
                         </div>
                     </div>
                 @endif

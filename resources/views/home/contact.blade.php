@@ -21,7 +21,7 @@
 
 
                 <div class="col-md-12">
-                    <h2 class="title text-center">İletişim </h2>
+                    <h2 class="title text-center">İLETİŞİM </h2>
                     <div class="col-md-6">
 
                         <h3 class="">Poyraz Ltd. Şti. </h3>
@@ -40,15 +40,15 @@
                             @endif
                             <form action="{{route("sendmessage")}}" method="post">
                                 @csrf
-                                <input type="text" name="name" placeholder="Adınız Soyadınız">
-                                <input type="email" name="email" placeholder="Email Adresiniz">
-                                <input type="text" name="phone" placeholder="Telefon">
+                                <input type="text" name="name" placeholder="Adınız Soyadınız" required>
+                                <input type="email" name="email" placeholder="Email Adresiniz" required>
+                                <input type="text" name="phone" placeholder="Telefon" required>
 
                                 <p>Mesaj Bilgileri</p>
-                                <input type="text" name="subject" placeholder="Konu">
+                                <input type="text" name="subject" placeholder="Konu"required>
                                 <textarea name="message"
                                           placeholder="Mesajınız..."
-                                          rows="5"></textarea>
+                                          rows="5" required></textarea>
                                 <button class="btn btn-primary mb-3" type="submit">Gönder</button>
                             </form>
                         </div>

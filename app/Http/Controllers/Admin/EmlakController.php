@@ -85,6 +85,9 @@ class EmlakController extends Controller
                     });
             })
             ->with("children")
+            ->orderBy('parentid')
+            ->orderBy('title')
+
             ->get();
 
 
@@ -261,8 +264,6 @@ class EmlakController extends Controller
         $emlak->city = $request->input('city');
         if ($request->hasFile('image')) {
             $emlak->image = Storage::putFile("images", $request->file('image'));
-        } else {
-            $emlak->image = null; // Veya varsayılan bir değer kullanabilirsiniz
         }
         $emlak->categoryid = $request->input('categoryid');
         $emlak->detail = $request->input('detail');
