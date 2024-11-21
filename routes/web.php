@@ -34,6 +34,8 @@ Route::post("sendmessage",[HomeController::class,"sendmessage"])->name('sendmess
 Route::get("/ilan/{id}/{slug}",[HomeController::class,"ilan"])->name('ilan');
 Route::get("/kategoriler/{id}/{slug}",[HomeController::class,"categoryilanlar"])->name('categoryilanlar');
 
+
+
 Route::prefix("admin")->group(function () {
     Route::get("login", [AdminHomeController::class, 'login'])->name('adminlogin');
     Route::post("logincheck", [AdminHomeController::class, 'logincheck'])->name('adminlogincheck');

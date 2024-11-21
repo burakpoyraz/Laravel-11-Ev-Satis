@@ -487,6 +487,8 @@ ul.sub-menu {
 	margin-right:15px;
 }
 
+
+
 .single-widget ul li a{
 	color: #8C8C88;
 	font-family: 'Roboto', sans-serif;
@@ -515,7 +517,15 @@ ul.sub-menu {
   padding: 7px;
   width: 212px;
 }
+.productinfo p {
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* En fazla 2 satır göster */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 40px
 
+}
 
 .searchform button {
   background: #FE980F;
@@ -1256,8 +1266,8 @@ h2.title {
 
 .product-information span {
   display: inline-block;
-  margin-bottom: 8px;
-  margin-top: 18px;
+  margin-bottom: 3px;
+  margin-top: 8px;
 }
 
 .product-information span span {
@@ -1286,6 +1296,28 @@ h2.title {
   font-family: 'Roboto', sans-serif;
   font-weight: 700;
   margin-right: 5px;
+}
+
+.product-information span.address {
+    color: #FE980F;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    margin-right: 20px;
+    margin-top: 2px;
+    display: block;
+    float: none;
+}
+.product-information span.addressinfo {
+    color: #363432;
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    margin-right: 20px;
+    margin-top: 2px;
+    display: block;
+    float: none;
+    margin-bottom: 20px;
 }
 
 .share {
@@ -2162,6 +2194,33 @@ h2.title {
   padding: 5px;
   font-size: 12px
 }
+.price-overlay {
+    position: absolute;
+    bottom: 10px; /* Alt kısımdan biraz yukarıda görünmesi için */
+    right: 10px; /* Sol kısımdan biraz içeride görünmesi için */
+    background: rgb(254, 152, 15,0.9); /* Yarı saydam siyah arka plan */
+    color: white; /* Yazı rengi */
+    padding: 10px 15px; /* İç boşluk */
+    border-radius: 5px; /* Köşeleri yuvarlatma */
+    font-size: 28px; /* Yazı boyutu */
+    font-weight: bold; /* Yazı kalınlığı */
+    font-family: 'Roboto', sans-serif;
+    border: 3px solid white; /* Beyaz çerçeve */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+}
+.city-overlay {
+    position: absolute;
+    bottom: 10px;  /* Resmin üst kısmına yakın */
+    right: 10px; /* Sol tarafa yakın */
+    background: rgba(0, 0, 0, 0.7); /* Yarı saydam siyah arka plan */
+    color: white; /* Yazı rengi */
+    padding: 5px 10px; /* İç boşluk */
+    border-radius: 5px; /* Köşeleri yuvarlatma */
+    font-size: 14px; /* Yazı boyutu */
+    font-weight: bold; /* Yazıyı kalınlaştır */
+    font-family: 'Roboto', sans-serif; /* Yazı tipi */
+}
+
 
 .rating-area .ratings {
   float: left;
@@ -2532,4 +2591,37 @@ h2.title {
   color: #FE980F;
 }
 
+
+.info-table {
+    font-family: 'Roboto', sans-serif;
+    border-collapse: separate;
+    border-spacing: 0px 0;
+    width: 100%;
+    max-width: 600px;
+    margin: 10px auto;
+}
+
+.info-table tr td {
+    padding: 8px 0;
+    position: relative;
+}
+
+.info-table tr td:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 80%;
+    border-bottom: 1px solid #ddd;
+}
+
+.info-table td:first-child {
+    color: #333;
+    font-weight: 500;
+    width: 35%;
+}
+
+.info-table td:last-child {
+    color: #666;
+}
 

@@ -34,7 +34,7 @@
                                         <h2>{{ number_format($ilan->fiyati, 0, ',', '.') }} TL</h2>
                                         <p>{{$ilan->title}}</p>
                                         <p><strong>{{$ilan->city}}</strong>  &nbsp;&nbsp;|&nbsp;&nbsp;  {{$ilan->metrekare_toplam_alan}} m²</p>
-                                        <a href="#" class="btn btn-default add-to-cart"><i
+                                        <a href="{{route("ilan",["id"=>$ilan->id,"slug"=>$ilan->slug])}}" class="btn btn-default add-to-cart"><i
                                                 class="fa fa-search"></i>Detay</a>
                                     </div>
                                 </div>

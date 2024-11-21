@@ -43,6 +43,14 @@
                                 <th>Mesaj</th>
                                 <td>{{$message->message}}</td>
                             </tr>
+                            <tr>
+                                <th>Geliş Tarihi</th>
+                                <td>{{ \Carbon\Carbon::parse($message->created_at)->format('d.m.Y  |  H:i') }}</td>
+                            </tr>
+
+
+
+
                             </thead>
                         </table>
                     </div>

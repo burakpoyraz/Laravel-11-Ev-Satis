@@ -49,4 +49,8 @@ class Emlak extends Model
     {
         return $this->hasOne(TuristikTesis::class, 'emlak_id',"id");
     }
+
+    public function images(){
+        return $this->hasMany(Image::class, 'emlak_id');
+    }
 }
