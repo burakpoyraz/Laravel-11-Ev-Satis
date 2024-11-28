@@ -137,6 +137,7 @@ class EmlakController extends Controller
                 $konut_ozellikleri->emlak_id = $emlak->id;
                 $konut_ozellikleri->oda_sayisi = (int)$request->input('oda_sayisi');
                 $konut_ozellikleri->binanin_kat_sayisi = (int)$request->input('binanin_kat_sayisi');
+                $konut_ozellikleri->bulundugu_kat = (int)$request->input('bulundugu_kat');
                 $konut_ozellikleri->binanin_yasi = (int)$request->input('binanin_yasi');
                 $konut_ozellikleri->isinma_tipi = $request->input('isinma_tipi');
                 $konut_ozellikleri->save();
@@ -321,6 +322,7 @@ class EmlakController extends Controller
                 $konut_ozellikleri->emlak_id = $emlak->id;
                 $konut_ozellikleri->oda_sayisi = (int)$request->input('oda_sayisi');
                 $konut_ozellikleri->binanin_kat_sayisi = (int)$request->input('binanin_kat_sayisi');
+                $konut_ozellikleri->bulundugu_kat = (int)$request->input('bulundugu_kat');
                 $konut_ozellikleri->binanin_yasi = (int)$request->input('binanin_yasi');
                 $konut_ozellikleri->isinma_tipi = $request->input('isinma_tipi');
                 $konut_ozellikleri->save();

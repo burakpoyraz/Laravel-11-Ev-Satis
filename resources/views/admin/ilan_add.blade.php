@@ -59,6 +59,10 @@
                                 <label>Binanın Kat Sayısı</label>
                                 <input class="form-control" name="binanin_kat_sayisi" type="number">
                             </div>
+                            <div class="form-group">
+                                <label>Bulunduğu Kat</label>
+                                <input class="form-control" name="bulundugu_kat" type="number">
+                            </div>
 
                             <div class="form-group">
                                 <label>Binanın Yaşı</label>

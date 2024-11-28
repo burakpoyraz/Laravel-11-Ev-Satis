@@ -30,8 +30,8 @@ class HomeController extends Controller
         $gunlukilanlar = Emlak::select("id", "title", "image", "fiyati", "slug", "categoryid", "city", "metrekare_toplam_alan")->inRandomOrder()->take(6)->get();
         $sonilanlar = Emlak::select("id", "title", "image", "fiyati", "slug", "categoryid", "city", "metrekare_toplam_alan")->latest()->take(4)->get();
 
-        $daireler = Emlak::select("id", "title", "image", "fiyati", "slug", "categoryid", "city", "metrekare_toplam_alan")->where("categoryid", 11)->inRandomOrder()->take(4)->get();
-        $mustakilevler = Emlak::select("id", "title", "image", "fiyati", "slug", "categoryid", "city", "metrekare_toplam_alan")->where("categoryid", 10)->inRandomOrder()->take(4)->get();
+        $daireler = Emlak::select("id", "title", "image", "fiyati", "slug", "categoryid", "city", "metrekare_toplam_alan")->where("categoryid", 7)->inRandomOrder()->take(4)->get();
+        $mustakilevler = Emlak::select("id", "title", "image", "fiyati", "slug", "categoryid", "city", "metrekare_toplam_alan")->where("categoryid", 9)->inRandomOrder()->take(4)->get();
         $arsalar = Emlak::select("id", "title", "image", "fiyati", "slug", "categoryid", "city", "metrekare_toplam_alan")->where("categoryid", 3)->inRandomOrder()->take(4)->get();
 
         $altkategorilerisyerleriid = Category::where('parentid', 2)->pluck('id');
@@ -153,6 +153,21 @@ class HomeController extends Controller
 
 
     }
+
+    public function emlakgetir(Request $request, $slug)
+    {
+        $data=Emlak::where("title",$request->input('search'))->first();
+        return redirect()->route('ilan',["id"=>$data->id,"slug"=>$data->slug]);
+
+    }
+
+public function searchemlakara($kelime){
+
+        $emlaks=Emlak::where("title","like","%".$kelime."%")->get();
+
+        return view('home.search_ilanlar', compact('emlaks','kelime'));
+
+}
 
 
 }

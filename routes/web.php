@@ -33,6 +33,8 @@ Route::get("logout",[HomeController::class,"logout"])->name('logout');
 Route::post("sendmessage",[HomeController::class,"sendmessage"])->name('sendmessage');
 Route::get("/ilan/{id}/{slug}",[HomeController::class,"ilan"])->name('ilan');
 Route::get("/kategoriler/{id}/{slug}",[HomeController::class,"categoryilanlar"])->name('categoryilanlar');
+Route::post("/emlakgetir",[HomeController::class,"emlakgetir"])->name('emlakgetir');
+Route::get("searchemlakara/{kelime}",[HomeController::class,"searchemlakara"])->name('searchemlakara');
 
 
 

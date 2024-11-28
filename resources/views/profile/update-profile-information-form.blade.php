@@ -28,12 +28,12 @@
 
                 <!-- Current Profile Photo -->
                 <div class="mt-2" x-show="! photoPreview">
-                    <img src="{{ $this->user->profile_photo_url }}" alt="{{ $this->user->name }}" class="rounded-full h-20 w-20 object-cover">
+                    <img src="{{ $this->user->profile_photo_url }}" alt="{{ $this->user->name }}" class="rounded-full size-20 object-cover">
                 </div>
 
                 <!-- New Profile Photo Preview -->
                 <div class="mt-2" x-show="photoPreview" style="display: none;">
-                    <span class="block rounded-full w-20 h-20 bg-cover bg-no-repeat bg-center"
+                    <span class="block rounded-full size-20 bg-cover bg-no-repeat bg-center"
                           x-bind:style="'background-image: url(\'' + photoPreview + '\');'">
                     </span>
                 </div>
@@ -80,18 +80,6 @@
                     </p>
                 @endif
             @endif
-        </div>
-
-        <div class="col-span-6 sm:col-span-4">
-            <x-label for="address" value="{{ __('Address') }}" />
-            <x-input id="address" type="text" class="mt-1 block w-full" wire:model="state.address" required autocomplete="name" />
-            <x-input-error for="name" class="mt-2" />
-        </div>
-
-        <div class="col-span-6 sm:col-span-4">
-            <x-label for="phone" value="{{ __('Phone') }}" />
-            <x-input id="phone" type="text" class="mt-1 block w-full" wire:model="state.phone" required autocomplete="name" />
-            <x-input-error for="name" class="mt-2" />
         </div>
     </x-slot>
 

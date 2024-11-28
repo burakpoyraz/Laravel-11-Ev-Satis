@@ -14,6 +14,7 @@ class KonutIsyeri extends Model
         "emlak_id",
         "oda_sayisi",
         "binanin_kat_Sayisi",
+        "bulundugu_kat",
         "binanin_yasi",
         "isinma_tipi"
 

@@ -94,6 +94,11 @@
                                                 <td>{{$ozellik->binanin_kat_sayisi}}</td>
                                             </tr>
                                             <tr>
+                                                <td><strong>Bulunduğu Kat</strong></td>
+                                                <td>{{$ozellik->bulundugu_kat}}</td>
+                                            </tr>
+
+                                            <tr>
                                                 <td><strong>Binanın Yaşı</strong></td>
                                                 <td>{{$ozellik->binanin_yasi}}</td>
                                             </tr>

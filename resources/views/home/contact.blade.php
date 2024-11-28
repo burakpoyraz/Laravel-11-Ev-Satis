@@ -28,7 +28,8 @@
                         {!! $setting->contact !!}
                     </div>
                     <div class="col-md-6">
-                        <h3 class="text-center">İletişim Formu</h3>
+                        <h3 class="text-center">Bize Ulaşın:</h3>
+                        <p>Sorularınız, talepleriniz veya işbirliği fırsatlarınız için bizimle iletişime geçebilirsiniz. Aşağıdaki formu doldurarak da mesaj bırakabilirsiniz. En kısa sürede dönüş yapacağız.</p>
 
                         <div class="shopper-info">
                             @if(session('success'))

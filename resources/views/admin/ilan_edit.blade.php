@@ -57,6 +57,12 @@
                             </div>
 
                             <div class="form-group">
+                                <label>Bulunduğu Kat</label>
+                                <input class="form-control" name="bulundugu_kat" type="number"
+                                       value="{{$ozellik->bulundugu_kat}}">
+                            </div>
+
+                            <div class="form-group">
                                 <label>Binanın Yaşı</label>
                                 <input class="form-control" name="binanin_yasi" type="number"
                                        value="{{$ozellik->binanin_yasi}}">
