@@ -2,11 +2,36 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Review;
 use App\Models\User;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
+
+
+    public function getquestions()
+    {
+
+        $sorucevaplar = Review::where("userid", Auth::user()->id)->get();
+
+
+        return view("home.questions", compact("sorucevaplar"));
+
+    }
+
+    public function deletequestion($id)
+    {
+
+        Review::destroy($id);
+
+        return redirect()->back()->with("message","Soru Silindi!");
+
+
+
+    }
+
+
     /**
      * Display a listing of the resource.
      */

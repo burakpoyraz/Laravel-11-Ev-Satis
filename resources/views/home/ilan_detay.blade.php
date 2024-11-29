@@ -185,7 +185,7 @@
                         <ul class="nav nav-tabs">
                             <li class="active"><a href="#details" data-toggle="tab">Detay</a></li>
                             <li><a href="#tag" data-toggle="tab">Tag</a></li>
-                            <li ><a href="#reviews" data-toggle="tab">Reviews (5)</a></li>
+                            <li><a href="#reviews" data-toggle="tab">Soru Sor ({{$sorucevaplar->count()}})</a></li>
                         </ul>
                     </div>
                     <div class="tab-content">
@@ -312,31 +312,80 @@
                         </div>
 
                         <div class="tab-pane fade" id="reviews">
-                            <div class="col-sm-12">
-                                <ul>
-                                    <li><a href=""><i class="fa fa-user"></i>EUGEN</a></li>
-                                    <li><a href=""><i class="fa fa-clock-o"></i>12:41 PM</a></li>
-                                    <li><a href=""><i class="fa fa-calendar-o"></i>31 DEC 2014</a></li>
-                                </ul>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis
-                                    nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                    consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-                                    dolore eu fugiat nulla pariatur.</p>
-                                <p><b>Write Your Review</b></p>
+                            <div class="col-sm-7 message-area">
+                                <div class="card message-container">
+                                    <div class="card-header bg-primary text-white">
+                                        @if($sorucevaplar->count()>0)
+                                        <h4 class="mb-0">
+                                            <i class="fa fa-comments"></i> Soru Geçmişi
+                                        </h4>
+                                        @else
+                                            <div class="alert alert-warning">
+                                                <p>Henüz Hiç Soru Yok</a>.</p>
+                                            </div>
 
-                                <form action="#">
-										<span>
-											<input type="text" placeholder="Your Name"/>
-											<input type="email" placeholder="Email Address"/>
-										</span>
-                                    <textarea name=""></textarea>
-                                    <b>Rating: </b> <img src="images/product-details/rating.png" alt=""/>
-                                    <button type="button" class="btn btn-default pull-right">
-                                        Submit
-                                    </button>
-                                </form>
+                                        @endif
+                                    </div>
+                                    <div class="card-body p-0">
+                                        <div class="message-list" style="max-height: 500px; overflow-y: auto;">
+                                            <!-- Kullanıcı Mesajı -->
+                                            @foreach($sorucevaplar as $rs)
+                                            <div class="message-item user-message border-bottom p-3">
+                                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                                    <div class="message-sender fw-bold">
+                                                        <i class="fa fa-user"></i> <i class="fa fa-user-circle text-primary me-2"></i>{{$rs->user->name}}
+                                                    </div>
+                                                        <small class="text-muted">
+                                                            <i class="fa fa-clock-o me-1"></i> {{ $rs->created_at->format('H:i') }}
+                                                            <i class="fa fa-calendar-o ms-2 me-1"></i> {{ $rs->created_at->locale('tr')->translatedFormat('d F Y') }}
+                                                        </small>
+                                                </div>
+                                                <div class="message-bubble user-bubble">
+                                                    <p><b> {{$rs->subject}}</b></p>
+                                                    <p class="message-text mb-0">
+                                                        {{$rs->question}}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+
+                            <div class="col-sm-5">
+                                @auth
+                                    <ul>
+                                        <li><a href=""><i
+                                                    class="fa fa-user"></i>{{\Illuminate\Support\Facades\Auth::user()->name}}
+                                            </a></li>
+                                        <li><a href=""><i
+                                                    class="fa fa-clock-o"></i>{{ now('Europe/Istanbul')->format('H:i') }}
+                                            </a></li>
+                                        <li><a href=""><i
+                                                    class="fa fa-calendar-o"></i>{{ now()->locale('tr')->translatedFormat('d F Y') }}
+                                            </a></li>
+                                    </ul>
+                                    <p><b>"İlan sahibiyle iletişime geçin!"</b></p>
+                                    <p>
+                                        Merak ettiğiniz tüm detayları ilan sahibine kolayca sorabilirsiniz. Gayrimenkul
+                                        hakkında daha fazla bilgi almak için aşağıdaki alanı kullanarak mesajınızı
+                                        iletin. ilan sahibi sizinle en kısa sürede iletişime geçecektir.</p>
+                                    <p><b>Dikkat:</b> Gönderdiğiniz mesaj, bilgi amaçlı olarak bu sayfada
+                                        yayınlanacaktır.
+                                        Bu
+                                        nedenle özel ya da kişisel bilgiler içermemeye özen gösteriniz.</p>
+
+                                    @livewire('review',['id'=>$emlak->id])
+                                @else
+
+                                    <div class="alert alert-warning">
+                                        <p>Soru sorabilmek için lütfen <a href="{{ route('login') }}">giriş yapın</a>
+                                            veya <a href="{{ route('register') }}">kayıt olun</a>.</p>
+                                    </div>
+                                @endauth
+                            </div>
+
                         </div>
 
                     </div>

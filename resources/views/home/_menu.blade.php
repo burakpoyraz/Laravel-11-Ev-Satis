@@ -25,7 +25,6 @@
             <div class="col-sm-3">
                 <div class="search_box pull-right">
                     @livewire('search')
-                    @livewireScripts
                 </div>
             </div>
         </div>

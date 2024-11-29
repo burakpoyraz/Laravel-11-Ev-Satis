@@ -36,6 +36,7 @@
             @section("content")
             @show
 @include("home._footer")
+@livewireScripts
 @yield("footer_js")
 </body>
 </html>

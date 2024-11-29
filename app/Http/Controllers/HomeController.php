@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Emlak;
 use App\Models\Message;
+use App\Models\Review;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -133,9 +134,11 @@ class HomeController extends Controller
         $resimler=$emlak->images->pluck('image');
         $resimler->prepend($emlak->image);
 
+        $sorucevaplar=Review::where("emlakid",$id)->get();
 
 
-        return view('home.ilan_detay', compact('emlak', 'resimler',"cins","ozellik"));
+
+        return view('home.ilan_detay', compact('emlak', 'resimler',"cins","ozellik","sorucevaplar"));
 
     }
 

@@ -1396,10 +1396,10 @@ h2.title {
   font-size: 14px;
   outline: medium none;
   padding: 8px;
-  width: 48%;
+  width: 100%;
 }
 #reviews form span input:last-child {
-  margin-left: 3%;
+  margin-left: 0%;
 }
 
 #reviews textarea {
@@ -1413,7 +1413,7 @@ h2.title {
   padding-left: 10px;
   padding-top: 15px;
   resize: none;
-  width: 99.5%;
+  width: 100%;
 }
 
 #reviews button {

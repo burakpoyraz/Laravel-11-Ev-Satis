@@ -4,7 +4,9 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\EmlakController;
 use App\Http\Controllers\Admin\ImageController;
 use App\Http\Controllers\Admin\MessageController;
+use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -48,6 +50,9 @@ Route::middleware("auth")->prefix("admin")->group(function () {
     Route::get('/', [AdminHomeController::class, 'index'])->name('adminhome');
     Route::get("logout", [AdminHomeController::class, 'logout'])->name('adminlogout');
 
+    Route::prefix("profile")->group(function () {
+        Route::get('/', [ProfileController::class, 'show'])->name('profile.show');
+    });
     //CATEGORY
     Route::prefix("category")->group(function () {
         Route::get('/', [CategoryController::class, 'index'])->name('admincategory');
@@ -86,6 +91,13 @@ Route::middleware("auth")->prefix("admin")->group(function () {
         Route::get("delete/{id}", [MessageController::class, 'destroy'])->name('adminmessagedelete');
 
     });
+    Route::prefix("questions")->group(function () {
+        Route::get("/",[ReviewController::class,'index'])->name('adminquestions');
+        Route::post("update/{id}", [ReviewController::class, 'update'])->name('adminquestionupdate');
+        Route::get("delete/{id}", [ReviewController::class, 'destroy'])->name('adminquestiondelete');
+        Route::get("show/{id}", [ReviewController::class, 'show'])->name('adminquestionshow');
+
+    });
 
 });
 
@@ -93,12 +105,13 @@ Route::middleware("auth")->prefix("admin")->group(function () {
 
 Route::middleware("auth")->prefix("myuser")->group(function () {
     Route::get("/", [UserController::class, 'index'])->name('userhome');
+    Route::get("/questions", [UserController::class, 'getquestions'])->name('getquestions');
+    Route::get("/deletequestion/{id}", [UserController::class, 'deletequestion'])->name('deletequestion');
 
 
 });
 
-Route::middleware("auth")->prefix("user")->group(function () {
-    Route::get("/profile", [UserController::class, 'index'])->name('userprofile');
-});
 
-
+//Route::middleware("auth")->prefix("user")->group(function () {
+//    Route::get("/profile", [UserController::class, 'index'])->name('userprofile');
+//});

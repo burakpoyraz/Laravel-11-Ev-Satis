@@ -53,4 +53,8 @@ class Emlak extends Model
     public function images(){
         return $this->hasMany(Image::class, 'emlak_id');
     }
+
+    public function reviews(){
+        return $this->hasMany(Review::class, 'emlakid');
+    }
 }

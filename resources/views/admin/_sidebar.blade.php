@@ -37,6 +37,10 @@
                 <a class="{{ request()->routeIs('adminmessages') ? 'active-menu' : '' }}" href="{{route("adminmessages")}}"><i class="fa fa-anchor "></i>Mesajlar</a>
             </li>
 
+            <li>
+                <a class="{{ request()->routeIs('adminquestions') ? 'active-menu' : '' }}" href="{{route("adminquestions")}}"><i class="fa fa-anchor "></i>Sorular</a>
+            </li>
+
 
 
         </ul>
