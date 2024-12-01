@@ -19,26 +19,45 @@
 
 
             <li>
-                <a class="{{ request()->routeIs('adminhome') ? 'active-menu' : '' }}" href="{{route("adminhome")}}"><i class="fa fa-dashboard "></i>Dashboard</a>
+                <a class="{{ request()->routeIs('adminhome') ? 'active-menu' : '' }}" href="{{route('adminhome')}}">
+                    <i class="fa fa-home"></i> Dashboard
+                </a>
             </li>
 
             <li>
-                <a class="{{ request()->routeIs('admincategory') ? 'active-menu' : '' }}" href="{{route("admincategory")}}"><i class="fa fa-anchor "></i>Kategoriler</a>
+                <a class="{{ request()->routeIs('admincategory') ? 'active-menu' : '' }}" href="{{route('admincategory')}}">
+                    <i class="fa fa-list"></i> Kategoriler
+                </a>
             </li>
 
             <li>
-                <a class="{{ request()->routeIs('adminemlaks') ? 'active-menu' : '' }}" href="{{route("adminemlaks")}}"><i class="fa fa-anchor "></i>İlanlar</a>
+                <a class="{{ request()->routeIs('adminemlaks') ? 'active-menu' : '' }}" href="{{route('adminemlaks')}}">
+                    <i class="fa fa-building"></i> İlanlar
+                </a>
             </li>
 
             <li>
-                <a class="{{ request()->routeIs('adminsetting') ? 'active-menu' : '' }}" href="{{route("adminsetting")}}"><i class="fa fa-anchor "></i>Ayarlar</a>
-            </li>
-            <li>
-                <a class="{{ request()->routeIs('adminmessages') ? 'active-menu' : '' }}" href="{{route("adminmessages")}}"><i class="fa fa-anchor "></i>Mesajlar</a>
+                <a class="{{ request()->routeIs('adminsetting') ? 'active-menu' : '' }}" href="{{route('adminsetting')}}">
+                    <i class="fa fa-cogs"></i> Ayarlar
+                </a>
             </li>
 
             <li>
-                <a class="{{ request()->routeIs('adminquestions') ? 'active-menu' : '' }}" href="{{route("adminquestions")}}"><i class="fa fa-anchor "></i>Sorular</a>
+                <a class="{{ request()->routeIs('adminmessages') ? 'active-menu' : '' }}" href="{{route('adminmessages')}}">
+                    <i class="fa fa-envelope"></i> Mesajlar
+                </a>
+            </li>
+
+            <li>
+                <a class="{{ request()->routeIs('adminquestions') ? 'active-menu' : '' }}" href="{{route('adminquestions')}}">
+                    <i class="fa fa-question-circle"></i> Sorular
+                </a>
+            </li>
+
+            <li>
+                <a class="{{ request()->routeIs('adminfaq') ? 'active-menu' : '' }}" href="{{route('adminfaq')}}">
+                    <i class="fa fa-info-circle"></i> Sıkça Sorulan Sorular
+                </a>
             </li>
 
 

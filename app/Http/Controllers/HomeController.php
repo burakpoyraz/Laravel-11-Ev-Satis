@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Emlak;
+use App\Models\Faq;
 use App\Models\Message;
 use App\Models\Review;
 use App\Models\Setting;
@@ -107,38 +108,37 @@ class HomeController extends Controller
             case Category::ISYERI:
             case Category::BINA:
             case Category::DEVREMULK:
-                $cins="KONUT_ISYERI";
+                $cins = "KONUT_ISYERI";
                 $ozellik = $emlak->konutIsyeriOzellikleri;
                 break;
 
             case Category::ARSA:
-                $cins="ARSA";
+                $cins = "ARSA";
                 $ozellik = $emlak->arsaOzellikleri;
                 break;
 
             case Category::TURISTIK_TESIS:
-                $cins="TURISTIK_TESIS";
+                $cins = "TURISTIK_TESIS";
                 $ozellik = $emlak->turistikTesisOzellikleri;
                 break;
 
             default:
-                $cins="";
+                $cins = "";
                 $ozellik = null;
         }
 
         if ($emlak->categoryid == Category::ARSA) {
-            $cins="ARSA";
+            $cins = "ARSA";
             $ozellik = $emlak->arsaOzellikleri;
         }
 
-        $resimler=$emlak->images->pluck('image');
+        $resimler = $emlak->images->pluck('image');
         $resimler->prepend($emlak->image);
 
-        $sorucevaplar=Review::where("emlakid",$id)->get();
+        $sorucevaplar = Review::where("emlakid", $id)->get();
 
 
-
-        return view('home.ilan_detay', compact('emlak', 'resimler',"cins","ozellik","sorucevaplar"));
+        return view('home.ilan_detay', compact('emlak', 'resimler', "cins", "ozellik", "sorucevaplar"));
 
     }
 
@@ -159,18 +159,28 @@ class HomeController extends Controller
 
     public function emlakgetir(Request $request, $slug)
     {
-        $data=Emlak::where("title",$request->input('search'))->first();
-        return redirect()->route('ilan',["id"=>$data->id,"slug"=>$data->slug]);
+        $data = Emlak::where("title", $request->input('search'))->first();
+        return redirect()->route('ilan', ["id" => $data->id, "slug" => $data->slug]);
 
     }
 
-public function searchemlakara($kelime){
+    public function searchemlakara($kelime)
+    {
 
-        $emlaks=Emlak::where("title","like","%".$kelime."%")->get();
+        $emlaks = Emlak::where("title", "like", "%" . $kelime . "%")->get();
 
-        return view('home.search_ilanlar', compact('emlaks','kelime'));
+        return view('home.search_ilanlar', compact('emlaks', 'kelime'));
 
-}
+    }
+
+    public function faq()
+    {
+
+        $datalist=Faq::all()->sortBy("position");
+        return view('home.faq', compact('datalist'));
+
+
+    }
 
 
 }

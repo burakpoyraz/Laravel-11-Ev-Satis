@@ -17,7 +17,7 @@
             </div>
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h4 class="panel-title"><a href="#">Siparişlerim</a></h4>
+                    <h4 class="panel-title"><a href="{{route("homeemlaks")}}">İlanlarım</a></h4>
                 </div>
             </div>
             <div class="panel panel-default">

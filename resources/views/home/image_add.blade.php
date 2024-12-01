@@ -5,14 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>@yield("title")</title>
 
-    <!-- BOOTSTRAP STYLES-->
-    <link href="{{asset("assets/admin")}}/assets/css/bootstrap.css" rel="stylesheet"/>
-    <!-- FONTAWESOME STYLES-->
-    <link href="{{asset("assets/admin")}}/assets/css/font-awesome.css" rel="stylesheet"/>
-    <!--CUSTOM BASIC STYLES-->
-    <link href="{{asset("assets/admin")}}/assets/css/basic.css" rel="stylesheet"/>
-    <!--CUSTOM MAIN STYLES-->
-    <link href="{{asset("assets/admin")}}/assets/css/custom.css" rel="stylesheet"/>
+    <link href="{{asset("assets")}}/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{asset("assets")}}/css/font-awesome.min.css" rel="stylesheet">
+    <link href="{{asset("assets")}}/css/prettyPhoto.css" rel="stylesheet">
+    <link href="{{asset("assets")}}/css/price-range.css" rel="stylesheet">
+    <link href="{{asset("assets")}}/css/animate.css" rel="stylesheet">
+    <link href="{{asset("assets")}}/css/main.css" rel="stylesheet">
+    <link href="{{asset("assets")}}/css/responsive.css" rel="stylesheet">
     <!-- GOOGLE FONTS-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
     <!-- BOOTSTRAP ICONS-->
@@ -58,7 +57,7 @@
                             <label>Resim</label>
                             <input class="form-control" name="image" type="file">
                         </div>
-                        <button type="submit" class="btn btn-info">Ekle</button>
+                        <button type="submit" class="btn btn-primary">Ekle</button>
 
                     </form>
                     @if(!empty($galeri) && $galeri->count() > 0)

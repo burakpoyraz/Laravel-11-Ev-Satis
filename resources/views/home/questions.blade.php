@@ -23,7 +23,7 @@
 
                 <div class="col-sm-9">
                     <div class="blog-post-area">
-                        <h2 class="title text-center">Hesabım</h2>
+                        <h2 class="title text-center">Sorularım</h2>
                         <div class="single-blog-post">
                             @if (session()->has("message"))
                                 <div class="alert alert-danger">

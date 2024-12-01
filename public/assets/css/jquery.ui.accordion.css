@@ -1,0 +1,57 @@
+/*!
+ * jQuery UI Accordion 1.10.2
+ * http://jqueryui.com
+ *
+ * Copyright 2013 jQuery Foundation and other contributors
+ * Released under the MIT license.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Accordion#theming
+ */
+.ui-accordion .ui-accordion-header {
+    display: block;
+    cursor: pointer;
+    position: relative;
+    margin-top: 2px;
+    padding: 0.8em 1em;
+    background:  #fe980f;
+    color: #fff;
+    font-size: 1.5em;
+    font-weight: bold;
+    border-radius: 0px 0px 0 0;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.ui-accordion .ui-accordion-header:hover {
+    background: rgba(255, 181, 74, 0.91);
+    color: #fff;
+}
+.ui-accordion .ui-accordion-header .ui-accordion-header-icon {
+    position: absolute;
+    right: 1em;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2em;
+    color: #fff;
+    transition: transform 0.3s;
+}
+
+.ui-accordion .ui-accordion-header.ui-accordion-header-active .ui-accordion-header-icon {
+    transform: translateY(-50%) rotate(180deg);
+}
+
+.ui-accordion .ui-accordion-content {
+    padding: 1em;
+    background: #ffffff;
+    color: #333;
+    font-size: 1em;
+    line-height: 1.5;
+
+    border-radius: 0 0 5px 5px;
+    display: none; /* İlk başta kapalı */
+}
+
+.ui-accordion .ui-accordion-content.ui-accordion-content-active {
+    display: block; /* Aktif içerik açık */
+    animation: fadeIn 0.3s ease-in-out;
+}

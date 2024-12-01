@@ -17,7 +17,7 @@
                         <li><a href="#">Yeni ilanlar</a></li>
                         <li><a href="{{route("aboutus")}}">Hakkımızda</a></li>
                         <li><a href="{{route("references")}}">Referanslar</a></li>
-                        <li><a href="{{route("fag")}}">SSS</a></li>
+                        <li><a href="{{route("faq")}}">SSS</a></li>
                         <li><a href="{{route("contact")}}">İletişim</a></li>
                     </ul>
                 </div>

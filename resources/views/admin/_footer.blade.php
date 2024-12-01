@@ -10,7 +10,11 @@
 <script type="text/javascript"  src="{{asset("assets/admin")}}/assets/js/jquery.metisMenu.js"></script>
 <!-- CUSTOM SCRIPTS -->
 <script type="text/javascript"  src="{{asset("assets/admin")}}/assets/js/custom.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote.min.js"></script>
 
+<!-- Steps JS -->
+<script src="https://cdn.jsdelivr.net/npm/jquery-steps@1.1.0/build/jquery.steps.min.js"></script>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
