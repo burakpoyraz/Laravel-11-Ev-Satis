@@ -57,4 +57,9 @@ class Emlak extends Model
     public function reviews(){
         return $this->hasMany(Review::class, 'emlakid');
     }
+
+    public function favorite(){
+        return $this->hasMany(Favorite::class, 'emlakid');
+
+    }
 }

@@ -59,7 +59,9 @@
                         </div>
                         <div class="col-sm-7">
                             <div class="product-information"><!--/product-information-->
-                                <img src="images/product-details/new.jpg" class="newarrival" alt=""/>
+                                <div class="favoriye-ekle">
+                                    @livewire("favorite_button",["id"=> $emlak->id])
+                                </div>
                                 <h2>{{$emlak->title}}</h2>
 
 
@@ -67,8 +69,15 @@
 									<span>{{ number_format($emlak->fiyati, 0, ',', '.') }} TL</span>
 								</span>
 
-                                <span class="address"><i class="fa fa-map-marker"></i> {{$emlak->city}}</span>
-                                <span class="addressinfo">{{$emlak->address}}</span>
+                                <div>
+                                    <div class="col-sm-6">
+                                        <span class="address"><i class="fa fa-map-marker"></i> {{$emlak->city}}</span>
+                                        <span class="addressinfo">{{$emlak->address}}</span>
+                                    </div>
+
+                                </div>
+
+
                                 <table class="info-table">
                                     <tr>
                                         <td><strong>İlan No</strong></td>
@@ -316,9 +325,9 @@
                                 <div class="card message-container">
                                     <div class="card-header bg-primary text-white">
                                         @if($sorucevaplar->count()>0)
-                                        <h4 class="mb-0">
-                                            <i class="fa fa-comments"></i> Soru Geçmişi
-                                        </h4>
+                                            <h4 class="mb-0">
+                                                <i class="fa fa-comments"></i> Soru Geçmişi
+                                            </h4>
                                         @else
                                             <div class="alert alert-warning">
                                                 <p>Henüz Hiç Soru Yok</a>.</p>
@@ -330,23 +339,24 @@
                                         <div class="message-list" style="max-height: 500px; overflow-y: auto;">
                                             <!-- Kullanıcı Mesajı -->
                                             @foreach($sorucevaplar as $rs)
-                                            <div class="message-item user-message border-bottom p-3">
-                                                <div class="d-flex justify-content-between align-items-center mb-2">
-                                                    <div class="message-sender fw-bold">
-                                                        <i class="fa fa-user"></i> <i class="fa fa-user-circle text-primary me-2"></i>{{$rs->user->name}}
-                                                    </div>
+                                                <div class="message-item user-message border-bottom p-3">
+                                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                                        <div class="message-sender fw-bold">
+                                                            <i class="fa fa-user"></i> <i
+                                                                class="fa fa-user-circle text-primary me-2"></i>{{$rs->user->name}}
+                                                        </div>
                                                         <small class="text-muted">
                                                             <i class="fa fa-clock-o me-1"></i> {{ $rs->created_at->format('H:i') }}
                                                             <i class="fa fa-calendar-o ms-2 me-1"></i> {{ $rs->created_at->locale('tr')->translatedFormat('d F Y') }}
                                                         </small>
+                                                    </div>
+                                                    <div class="message-bubble user-bubble">
+                                                        <p><b> {{$rs->subject}}</b></p>
+                                                        <p class="message-text mb-0">
+                                                            {{$rs->question}}
+                                                        </p>
+                                                    </div>
                                                 </div>
-                                                <div class="message-bubble user-bubble">
-                                                    <p><b> {{$rs->subject}}</b></p>
-                                                    <p class="message-text mb-0">
-                                                        {{$rs->question}}
-                                                    </p>
-                                                </div>
-                                            </div>
                                             @endforeach
                                         </div>
                                     </div>

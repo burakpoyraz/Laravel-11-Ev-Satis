@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\ImageController;
 use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\FavoritesController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -134,6 +135,13 @@ Route::middleware("auth")->prefix("myuser")->group(function () {
         Route::get("create/{id}", [HomeImageController::class, 'create'])->name('homeimagecreate');
         Route::post("store/{id}", [HomeImageController::class, 'store'])->name('homeimagestore');
         Route::get("delete/{emlak_id}/{id}", [HomeImageController::class, 'destroy'])->name('homeimagedelete');
+    });
+
+    Route::prefix("favorite")->group(function () {
+        Route::get('/', [FavoritesController::class, 'index'])->name('homefavorite');
+        Route::post("store", [FavoritesController::class, 'store'])->name('homefavoritestore');
+        Route::post("update/{id}", [FavoritesController::class, 'update'])->name('homefavoriteupdate');
+        Route::get("delete/{id}", [FavoritesController::class, 'destroy'])->name('homefavoritedelete');
     });
 
 

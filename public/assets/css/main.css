@@ -2687,3 +2687,45 @@ h2.title {
     font-size: 0.9em;
 
 }
+.favoriye-ekle {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+
+    font-size: 14px;
+    cursor: pointer;
+    display: flex; /* İkon ve yazıyı hizalamak için */
+    align-items: center;
+    gap: 5px; /* İkon ve yazı arasına boşluk */
+    transition: color 0.3s ease; /* Renk geçişi için animasyon */
+}
+
+.favoriye-ekle button{
+
+    border: 1px solid #dc3545;
+    padding: 5px;
+    border-radius: 5px;
+
+}
+
+.favori-active {
+    background: #dc3545; /* Favori olduğu zaman kırmızı arka plan */
+    color: #FFFFFF; /* Beyaz yazı */
+}
+
+.favori-inactive {
+    background: #FFFFFF; /* Favori değilse beyaz arka plan */
+    color: #dc3545; /* Kırmızı yazı */
+}
+
+.favoriye-ekle button:hover {
+    opacity: 0.8; /* Hover efekti */
+}
+.favoriye-ekle i {
+    vertical-align: middle; /* İkonu yazı ile hizala */
+    margin-right: 2px;
+}
+
+
+
+

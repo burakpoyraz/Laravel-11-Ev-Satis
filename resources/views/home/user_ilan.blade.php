@@ -57,7 +57,7 @@
                             @foreach($emlaks as $rs)
                                 <tr>
                                     <td>{{$rs->id}}</td>
-                                    <td>{{$rs->title}}</td>
+                                    <td><a href="{{route("ilan",["id"=>$rs->id,"slug"=>$rs->slug])}}">{{$rs->title}}</a></td>
                                     <td>{{\App\Http\Controllers\Admin\CategoryController::getParentsTree($rs->kategori,$rs->kategori->title)}}</td>
                                     <td class="text-nowrap">{{ number_format($rs->fiyati, 0, ',', '.') }}TL
                                     </td>
