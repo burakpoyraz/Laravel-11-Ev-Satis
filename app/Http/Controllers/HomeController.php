@@ -137,8 +137,10 @@ class HomeController extends Controller
 
         $sorucevaplar = Review::where("emlakid", $id)->get();
 
+        $gunlukilanlar = Emlak::select("id", "title", "image", "fiyati", "slug", "categoryid", "city", "metrekare_toplam_alan")->inRandomOrder()->take(9)->get();
 
-        return view('home.ilan_detay', compact('emlak', 'resimler', "cins", "ozellik", "sorucevaplar"));
+
+        return view('home.ilan_detay', compact('emlak', 'resimler', "cins", "ozellik", "sorucevaplar","gunlukilanlar"));
 
     }
 
@@ -176,7 +178,7 @@ class HomeController extends Controller
     public function faq()
     {
 
-        $datalist=Faq::all()->sortBy("position");
+        $datalist = Faq::all()->sortBy("position");
         return view('home.faq', compact('datalist'));
 
 

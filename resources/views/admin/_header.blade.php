@@ -6,7 +6,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="{{route("adminhome")}}">COMPANY NAME</a>
+        <a class="navbar-brand" href="{{route("adminhome")}}">Poyraz Emlak</a>
     </div>
 
     <div class="header-right">

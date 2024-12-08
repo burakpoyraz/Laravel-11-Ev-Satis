@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\ImageController;
 use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\FavoritesController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
@@ -51,67 +52,86 @@ Route::prefix("admin")->group(function () {
 
 Route::middleware("auth")->prefix("admin")->group(function () {
 
-    Route::get('/', [AdminHomeController::class, 'index'])->name('adminhome');
-    Route::get("logout", [AdminHomeController::class, 'logout'])->name('adminlogout');
+    Route::middleware("admin")->group(function () {
+        Route::get('/', [AdminHomeController::class, 'index'])->name('adminhome');
+        Route::get("logout", [AdminHomeController::class, 'logout'])->name('adminlogout');
 
-    Route::prefix("profile")->group(function () {
-        Route::get('/', [ProfileController::class, 'show'])->name('profile.show');
-    });
-    //CATEGORY
-    Route::prefix("category")->group(function () {
-        Route::get('/', [CategoryController::class, 'index'])->name('admincategory');
-        Route::get("create", [CategoryController::class, 'create'])->name('categorycreate');
-        Route::post("store", [CategoryController::class, 'store'])->name('categorystore');
-        Route::get("edit/{id}", [CategoryController::class, 'edit'])->name('categoryedit');
-        Route::post("update/{id}", [CategoryController::class, 'update'])->name('categoryupdate');
-        Route::get("delete/{id}", [CategoryController::class, 'destroy'])->name('categorydelete');
+        Route::prefix("profile")->group(function () {
+            Route::get('/', [ProfileController::class, 'show'])->name('profile.show');
+        });
+        //CATEGORY
+        Route::prefix("category")->group(function () {
+            Route::get('/', [CategoryController::class, 'index'])->name('admincategory');
+            Route::get("create", [CategoryController::class, 'create'])->name('categorycreate');
+            Route::post("store", [CategoryController::class, 'store'])->name('categorystore');
+            Route::get("edit/{id}", [CategoryController::class, 'edit'])->name('categoryedit');
+            Route::post("update/{id}", [CategoryController::class, 'update'])->name('categoryupdate');
+            Route::get("delete/{id}", [CategoryController::class, 'destroy'])->name('categorydelete');
+        });
+
+        //EMLAKS
+        Route::prefix("emlak")->group(function () {
+            Route::get('/', [EmlakController::class, 'index'])->name('adminemlaks');
+            Route::get("create", [EmlakController::class, 'create'])->name('adminemlakcreate');
+            Route::post("store", [EmlakController::class, 'store'])->name('adminemlakstore');
+            Route::get("edit/{id}", [EmlakController::class, 'edit'])->name('adminemlakedit');
+            Route::post("update/{id}/{ozellik_id}", [EmlakController::class, 'update'])->name('adminemlakupdate');
+            Route::get("delete/{id}", [EmlakController::class, 'destroy'])->name('adminemlakdelete');
+        });
+
+        Route::prefix("image")->group(function () {
+            Route::get("create/{id}", [ImageController::class, 'create'])->name('adminimagecreate');
+            Route::post("store/{id}", [ImageController::class, 'store'])->name('adminimagestore');
+            Route::get("delete/{emlak_id}/{id}", [ImageController::class, 'destroy'])->name('adminimagedelete');
+        });
+        Route::prefix("setting")->group(function () {
+            Route::get("/", [SettingController::class, 'index'])->name('adminsetting');
+            Route::post("update", [SettingController::class, 'update'])->name('adminsettingupdate');
+
+
+        });
+        Route::prefix("messages")->group(function () {
+            Route::get("/", [MessageController::class, 'index'])->name('adminmessages');
+            Route::get("edit/{id}", [MessageController::class, 'edit'])->name('adminmessageedit');
+            Route::post("update/{id}", [MessageController::class, 'update'])->name('adminmessageupdate');
+            Route::get("delete/{id}", [MessageController::class, 'destroy'])->name('adminmessagedelete');
+
+        });
+        Route::prefix("questions")->group(function () {
+            Route::get("/", [ReviewController::class, 'index'])->name('adminquestions');
+            Route::post("update/{id}", [ReviewController::class, 'update'])->name('adminquestionupdate');
+            Route::get("delete/{id}", [ReviewController::class, 'destroy'])->name('adminquestiondelete');
+            Route::get("show/{id}", [ReviewController::class, 'show'])->name('adminquestionshow');
+
+        });
+
+        Route::prefix("faq")->group(function () {
+            Route::get("/", [FaqController::class, 'index'])->name('adminfaq');
+            Route::get("create", [FaqController::class, 'create'])->name('adminfaqcreate');
+            Route::post("store", [FaqController::class, 'store'])->name('adminfaqstore');
+            Route::get("edit/{id}", [FaqController::class, 'edit'])->name('adminfaqedit');
+            Route::post("update/{id}", [FaqController::class, 'update'])->name('adminfaqupdate');
+            Route::get("delete/{id}", [FaqController::class, 'destroy'])->name('adminfaqdelete');
+            Route::get("show/{id}", [FaqController::class, 'show'])->name('adminfaqshow');
+        });
+
+        Route::prefix("users")->group(function () {
+            Route::get("/", [AdminUserController::class, 'index'])->name('adminusers');
+            Route::get("create", [AdminUserController::class, 'create'])->name('adminusercreate');
+            Route::post("store", [AdminUserController::class, 'store'])->name('adminuserstore');
+            Route::get("edit/{id}", [AdminUserController::class, 'edit'])->name('adminuseredit');
+            Route::post("update/{id}", [AdminUserController::class, 'update'])->name('adminuserupdate');
+            Route::get("delete/{id}", [AdminUserController::class, 'destroy'])->name('adminuserdelete');
+            Route::get("show/{id}", [AdminUserController::class, 'show'])->name('adminusershow');
+            Route::get("userrole/{id}", [AdminUserController::class, 'userroles'])->name('userroles');
+            Route::post("userrolestore/{id}", [AdminUserController::class, 'userrolesstore'])->name('userrolesstore');
+            Route::get("userroledelete/{userid}/{roleid}", [AdminUserController::class, 'userrolesdelete'])->name('userrolesdelete');
+        });
+
+
     });
 
-    //EMLAKS
-    Route::prefix("emlak")->group(function () {
-        Route::get('/', [EmlakController::class, 'index'])->name('adminemlaks');
-        Route::get("create", [EmlakController::class, 'create'])->name('adminemlakcreate');
-        Route::post("store", [EmlakController::class, 'store'])->name('adminemlakstore');
-        Route::get("edit/{id}", [EmlakController::class, 'edit'])->name('adminemlakedit');
-        Route::post("update/{id}/{ozellik_id}", [EmlakController::class, 'update'])->name('adminemlakupdate');
-        Route::get("delete/{id}", [EmlakController::class, 'destroy'])->name('adminemlakdelete');
-    });
 
-    Route::prefix("image")->group(function () {
-        Route::get("create/{id}", [ImageController::class, 'create'])->name('adminimagecreate');
-        Route::post("store/{id}", [ImageController::class, 'store'])->name('adminimagestore');
-        Route::get("delete/{emlak_id}/{id}", [ImageController::class, 'destroy'])->name('adminimagedelete');
-    });
-    Route::prefix("setting")->group(function () {
-        Route::get("/", [SettingController::class, 'index'])->name('adminsetting');
-        Route::post("update", [SettingController::class, 'update'])->name('adminsettingupdate');
-
-
-    });
-    Route::prefix("messages")->group(function () {
-        Route::get("/", [MessageController::class, 'index'])->name('adminmessages');
-        Route::get("edit/{id}", [MessageController::class, 'edit'])->name('adminmessageedit');
-        Route::post("update/{id}", [MessageController::class, 'update'])->name('adminmessageupdate');
-        Route::get("delete/{id}", [MessageController::class, 'destroy'])->name('adminmessagedelete');
-
-    });
-    Route::prefix("questions")->group(function () {
-        Route::get("/", [ReviewController::class, 'index'])->name('adminquestions');
-        Route::post("update/{id}", [ReviewController::class, 'update'])->name('adminquestionupdate');
-        Route::get("delete/{id}", [ReviewController::class, 'destroy'])->name('adminquestiondelete');
-        Route::get("show/{id}", [ReviewController::class, 'show'])->name('adminquestionshow');
-
-    });
-
-    Route::prefix("faq")->group(function () {
-        Route::get("/", [FaqController::class, 'index'])->name('adminfaq');
-        Route::get("create", [FaqController::class, 'create'])->name('adminfaqcreate');
-        Route::post("store", [FaqController::class, 'store'])->name('adminfaqstore');
-        Route::get("edit/{id}", [FaqController::class, 'edit'])->name('adminfaqedit');
-        Route::post("update/{id}", [FaqController::class, 'update'])->name('adminfaqupdate');
-        Route::get("delete/{id}", [FaqController::class, 'destroy'])->name('adminfaqdelete');
-        Route::get("show/{id}", [FaqController::class, 'show'])->name('adminfaqshow');
-    });
 
 });
 

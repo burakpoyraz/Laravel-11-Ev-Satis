@@ -26,6 +26,7 @@
                             <thead>
                             <tr>
                                 <th>ID</th>
+                                <th>İsim</th>
                                 <th>Emlak</th>
                                 <th>Konu</th>
                                 <th>Soru</th>
@@ -43,6 +44,10 @@
                                 <tr>
                                     <td>{{ $soru->id }}</td>
                                     <td>
+                                        <a href="{{route("adminusershow",[$soru->user->id])}}"
+                                           onclick="return !window.open(this.href,'','top=50 left=100 width=800,height=700')">{{ $soru->user->name }}</a>
+                                    </td>
+                                    <td>
                                         <a href="{{route("ilan",["id"=>$soru->emlak->id, "slug"=>$soru->emlak->slug])}}"> {{ $soru->emlak->title }}</a>
                                     </td>
                                     <td>{{ $soru->subject }}</td>
@@ -52,9 +57,13 @@
                                     <td>{{ $soru->answer ?? 'Henüz cevaplandırılmadı' }}</td>
                                     <td>{{ $soru->answered_at ?? 'Cevap yok' }}</td>
                                     <td>{{ $soru->created_at->format('d.m.Y H:i')}}</td>
-                                    <td class="text-nowrap" style="width: 120px;"><a href="{{route("adminquestionshow",["id"=>$soru->id])}}"  class="btn btn-sm btn-primary">  <i class="bi bi-pencil-square"></i></a> <a
-                                            href="{{route("adminquestiondelete",["id"=>$soru->id])}}" style="margin-left: 25px"   class="btn btn-sm btn-danger"
-                                            onclick="return confirm('Bu soruyu silmek istediğinize emin misiniz?')"><i class="bi bi-trash"></i></a></td>
+                                    <td class="text-nowrap" style="width: 120px;"><a
+                                            href="{{route("adminquestionshow",["id"=>$soru->id])}}"
+                                            class="btn btn-sm btn-primary"> <i class="bi bi-pencil-square"></i></a> <a
+                                            href="{{route("adminquestiondelete",["id"=>$soru->id])}}"
+                                            style="margin-left: 25px" class="btn btn-sm btn-danger"
+                                            onclick="return confirm('Bu soruyu silmek istediğinize emin misiniz?')"><i
+                                                class="bi bi-trash"></i></a></td>
 
                                 </tr>
                             @endforeach

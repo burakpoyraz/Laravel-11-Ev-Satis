@@ -39,12 +39,15 @@
                             @foreach($emlaks as $rs)
                                 <tr>
                                     <td>{{$rs->id}}</td>
-                                    <td>{{$rs->title}}</td>
+                                    <td> <a href="{{route("ilan",["id"=>$rs->id, "slug"=>$rs->slug])}}"> {{$rs->title}}</a></td>
                                     <td>{{\App\Http\Controllers\Admin\CategoryController::getParentsTree($rs->kategori,$rs->kategori->title)}}</td>
                                     <td class="text-nowrap">{{ number_format($rs->fiyati, 0, ',', '.') }} TL</td>
                                     <td>{{$rs->address}}</td>
                                     <td>{{$rs->city}}</td>
-                                    <td>{{$rs->kullanici->name}}</td>
+                                    <td>
+                                        <a href="{{route("adminusershow",[$rs->kullanici->id])}}"
+                                           onclick="return !window.open(this.href,'','top=50 left=100 width=800,height=700')">{{$rs->kullanici->name}}</a>
+                                        </td>
                                     <td>
                                         @if($rs->image)
                                             <img src="{{\Illuminate\Support\Facades\Storage::url($rs->image)}}" height="30" alt="">

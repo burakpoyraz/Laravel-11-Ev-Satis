@@ -43,6 +43,7 @@
                     GALERİ OLUŞTUR ({{$emlak->title}})
                 </div>
                 <div class="panel-body">
+                    @if(@session("")) @endif
                     <form role="form" action="{{route("adminimagestore",["id"=>$emlak->id])}}" method="post"
                           enctype="multipart/form-data">
                         @csrf

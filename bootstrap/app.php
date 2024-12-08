@@ -1,4 +1,6 @@
 <?php
+
+use App\Http\Middleware\CheckAdmin;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
@@ -13,7 +15,9 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->redirectGuestsTo(fn (Request $request) => route('adminlogin'));
-        //
+        $middleware->alias([
+            "admin"=> CheckAdmin::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
