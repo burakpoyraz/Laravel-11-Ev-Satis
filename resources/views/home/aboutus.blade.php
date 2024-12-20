@@ -6,9 +6,9 @@
 @endphp
 
 @section("title","Hesap Ayarları")
-@section("description"){{$setting->description}}@endsection
+@section("description"){{$setting->description??"---"}}@endsection
 
-@section("keywords"){{$setting->keywords}}@endsection
+@section("keywords"){{$setting->keywords??"---"}}@endsection
 
 @section("content")
 
@@ -20,7 +20,7 @@
 
                 <div class="col-sm-12">
                     <h2 class="title text-center">Hakkımızda </h2>
-                   {!!$setting->aboutus  !!}
+                   {!!$setting->aboutus??"Hakkkımızda bölümü henüz düzenlenmedi"  !!}
                 </div>
 
             </div>

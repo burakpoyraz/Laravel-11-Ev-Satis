@@ -4,13 +4,15 @@
     $setting=\App\Http\Controllers\HomeController::settings()
 @endphp
 
-@section("title","Hesap Ayarları")
+@section("title")
+    Hesap Ayarları - {{$setting->title ?? "---"}}
+@endsection
 @section("description")
-    {{$setting->description}}
+    {{$setting->description ?? "---"}}
 @endsection
 
 @section("keywords")
-    {{$setting->keywords}}
+    {{$setting->keywords ?? "---"}}
 @endsection
 
 @section("content")
@@ -24,12 +26,13 @@
                     <h2 class="title text-center">İLETİŞİM </h2>
                     <div class="col-md-6">
 
-                        <h3 class="">Poyraz Ltd. Şti. </h3>
-                        {!! $setting->contact !!}
+                        <h3 class="">{{$setting->company ?? "---"}}</h3>
+                        {!! $setting->contact  ?? "---" !!}
                     </div>
                     <div class="col-md-6">
                         <h3 class="text-center">Bize Ulaşın:</h3>
-                        <p>Sorularınız, talepleriniz veya işbirliği fırsatlarınız için bizimle iletişime geçebilirsiniz. Aşağıdaki formu doldurarak da mesaj bırakabilirsiniz. En kısa sürede dönüş yapacağız.</p>
+                        <p>Sorularınız, talepleriniz veya işbirliği fırsatlarınız için bizimle iletişime geçebilirsiniz.
+                            Aşağıdaki formu doldurarak da mesaj bırakabilirsiniz. En kısa sürede dönüş yapacağız.</p>
 
                         <div class="shopper-info">
                             @if(session('success'))

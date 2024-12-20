@@ -31,6 +31,16 @@ class UserController extends Controller
 
     }
 
+    public function cevapverileceksorularigetir(){
+
+        $cevapverileceksorular = Review::whereRelation('emlak', 'userid', Auth::id())
+            ->with('emlak') // İlgili emlak bilgilerini de yükler
+            ->get();
+
+        return view("home.answers", compact("cevapverileceksorular"));
+
+    }
+
 
     /**
      * Display a listing of the resource.

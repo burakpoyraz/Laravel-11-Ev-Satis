@@ -23,7 +23,7 @@
 
                 <div class="col-sm-9">
                     <div class="blog-post-area">
-                        <h2 class="title text-center">Sorularım</h2>
+                        <h2 class="title text-center">Cevap Verilen/Verilecek Sorular</h2>
                         <div class="single-blog-post">
                             @if (session()->has("message"))
                                 <div class="alert alert-danger">
@@ -46,7 +46,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($sorucevaplar as $soru)
+                                @foreach($cevapverileceksorular as $soru)
                                     <tr>
                                         <td>{{ $soru->id }}</td>
                                         <td>
@@ -59,7 +59,11 @@
                                         <td>{{ $soru->answer ?? 'Henüz cevaplandırılmadı' }}</td>
                                         <td>{{ $soru->answered_at ?? 'Cevap yok' }}</td>
                                         <td>{{ $soru->created_at->format('d.m.Y H:i')}}</td>
-                                        <td><a
+                                        <td>
+                                            <a href="{{route("homeemlakedit",["id"=>$rs->id])}}"
+                                               class="btn btn-sm btn-info"> <i class="fa fa-pencil"
+                                                                               aria-hidden="true"></i></a>
+                                            <a
                                                 href="{{route("deletequestion",["id"=>$soru->id])}}"
                                                 style="margin-left: 25px" class="btn btn-sm btn-danger"
                                                 onclick="return confirm('Bu soruyu silmek istediğinize emin misiniz?')"><span class="glyphicon glyphicon-trash"></span> Sil</a></td>

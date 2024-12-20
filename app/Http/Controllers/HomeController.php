@@ -9,6 +9,7 @@ use App\Models\Message;
 use App\Models\Review;
 use App\Models\Setting;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -27,6 +28,10 @@ class HomeController extends Controller
 
     public function index()
     {
+        if (Category::count() == 0) {
+            Artisan::call('db:seed', ['--class' => 'CategorySeeder']);
+        }
+
 
         $slider = Emlak::select("id", "title", "image", "fiyati", "slug", "categoryid", "city", "metrekare_toplam_alan")->inRandomOrder()->take(4)->get();
         $gunlukilanlar = Emlak::select("id", "title", "image", "fiyati", "slug", "categoryid", "city", "metrekare_toplam_alan")->inRandomOrder()->take(6)->get();
@@ -183,6 +188,19 @@ class HomeController extends Controller
 
 
     }
+
+    public function onecikanlar()
+    {
+
+       $ilanlar= Emlak::select("id", "title", "image", "fiyati", "slug", "categoryid", "city", "metrekare_toplam_alan")->inRandomOrder()->take(20)->get();
+        return view('home.onecikan_ilan', compact( 'ilanlar'));
+    }
+    public function yeniilanlar()
+    {
+        $ilanlar= Emlak::select("id", "title", "image", "fiyati", "slug", "categoryid", "city", "metrekare_toplam_alan")->latest()->take(15)->get();
+        return view('home.soneklenen_ilan', compact( 'ilanlar'));
+    }
+
 
 
 }

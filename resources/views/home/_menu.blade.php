@@ -13,8 +13,8 @@
                 <div class="mainmenu pull-left">
                     <ul class="nav navbar-nav collapse navbar-collapse">
                         <li><a href="{{route("home")}}" class="active">Anasayfa</a></li>
-                        <li><a href="#">Öne Çıkanlar</a></li>
-                        <li><a href="#">Yeni ilanlar</a></li>
+                        <li><a href="{{route("onecikanlar")}}">Öne Çıkanlar</a></li>
+                        <li><a href="{{route("yeniilanlar")}}">Yeni ilanlar</a></li>
                         <li><a href="{{route("aboutus")}}">Hakkımızda</a></li>
                         <li><a href="{{route("references")}}">Referanslar</a></li>
                         <li><a href="{{route("faq")}}">SSS</a></li>

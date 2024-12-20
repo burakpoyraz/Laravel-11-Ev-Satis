@@ -42,7 +42,7 @@
                     GALERİ OLUŞTUR ({{$emlak->title}})
                 </div>
                 <div class="panel-body">
-                    <form role="form" action="{{route("adminimagestore",["id"=>$emlak->id])}}" method="post"
+                    <form role="form" action="{{route("homeimagestore",["id"=>$emlak->id])}}" method="post"
                           enctype="multipart/form-data">
                         @csrf
 
@@ -55,7 +55,7 @@
 
                         <div class="form-group">
                             <label>Resim</label>
-                            <input class="form-control" name="image" type="file">
+                            <input class="form-control" name="image[]" type="file" multiple>
                         </div>
                         <button type="submit" class="btn btn-primary">Ekle</button>
 
@@ -79,7 +79,7 @@
                                     <td><img src="{{\Illuminate\Support\Facades\Storage::url($rs->image)}}" height="60"
                                              alt=""></td>
                                     <td class="text-nowrap" style="width: 120px;"><a
-                                            href="{{route("adminimagedelete",["id"=>$rs->id,"emlak_id"=>$emlak->id])}}" style="margin-left: 10px"
+                                            href="{{route("homeimagedelete",["id"=>$rs->id,"emlak_id"=>$emlak->id])}}" style="margin-left: 10px"
                                             class="btn btn-sm btn-danger"
                                             onclick="return confirm('Bu resmi silmek istediğinize emin misiniz?')"><i
                                                 class="bi bi-trash"></i></a></td>

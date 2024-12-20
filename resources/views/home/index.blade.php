@@ -6,13 +6,13 @@
     $setting=\App\Http\Controllers\HomeController::settings()
 @endphp
 
-@section("title",$setting->title)
+@section("title", $setting->title ?? '---')
 @section("description")
-    {{$setting->description}}
+    {{$setting->description ?? "---"}}
 @endsection
 
 @section("keywords")
-    {{$setting->keywords}}
+    {{$setting->keywords ?? "---"}}
 @endsection
 
 @section("content")
@@ -52,12 +52,7 @@
                                         </div>
 
                                     </div>
-                                    <div class="choose">
-                                        <ul class="nav nav-pills nav-justified">
-                                            <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-                                            <li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
-                                        </ul>
-                                    </div>
+
                                 </div>
                             </div>
                         @endforeach

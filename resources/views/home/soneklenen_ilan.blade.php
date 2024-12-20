@@ -4,7 +4,7 @@
     $setting=\App\Http\Controllers\HomeController::settings()
 @endphp
 
-@section("title", $kelime . " İlanları")
+@section("title", "Yeni İlanlar")
 @section("description")
     {{$setting->description??"---"}}
 @endsection
@@ -23,9 +23,9 @@
 
                 <div class="col-sm-9 padding-right">
                     <div class="features_items"><!--features_items-->
-                        <h2 class="title text-center">Satılık {{$kelime}} ilanları</h2>
+                        <h2 class="title text-center">Yeni ilanlar</h2>
 
-                        @foreach($emlaks as $ilan)
+                        @foreach($ilanlar as $ilan)
                         <div class="col-sm-4">
                             <div class="product-image-wrapper">
                                 <div class="single-products">
@@ -38,17 +38,12 @@
                                                 class="fa fa-search"></i>Detay</a>
                                     </div>
                                 </div>
-                                <div class="choose">
-                                    <ul class="nav nav-pills nav-justified">
-                                        <li><a href=""><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-                                        <li><a href=""><i class="fa fa-plus-square"></i>Add to compare</a></li>
-                                    </ul>
-                                </div>
+
                             </div>
                         </div>
 
                         @endforeach
-                    </div><!--features_items-->
+                    </div>
 
                     <div class="pagination-container text-center">
                         <ul class="pagination">

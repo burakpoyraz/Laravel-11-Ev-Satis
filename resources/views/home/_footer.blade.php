@@ -54,11 +54,11 @@
                 </div>
                 <div class="col-sm-3 col-sm-offset-1">
                     <div class="single-widget">
-                        <h2>{{$setting->company}}</h2>
-                            <p><strong>Adres:</strong><br />{{$setting->address}}</p>
-                            <p><strong>Telefon:</strong> {{$setting->phone}}</p>
-                            <p><strong>Fax:</strong> {{$setting->fax}}</p>
-                            <p><strong>Email:</strong> {{$setting->email}}</p>
+                        <h2>{{$setting->company ?? "---"}}</h2>
+                            <p><strong>Adres:</strong><br />{{$setting->address ?? "---"}}</p>
+                            <p><strong>Telefon:</strong> {{$setting->phone ?? "---"}}</p>
+                            <p><strong>Fax:</strong> {{$setting->fax ?? "---"}}</p>
+                            <p><strong>Email:</strong> {{$setting->email ?? "---"}}</p>
 
                     </div>
                 </div>
@@ -70,7 +70,7 @@
     <div class="footer-bottom">
         <div class="container">
             <div class="row">
-                <p class="pull-left">Copyright © {{ date('Y') }} {{$setting->company}} All rights reserved.</p>
+                <p class="pull-left">Copyright © {{ date('Y') }} {{$setting->company ?? "---"}} All rights reserved.</p>
             </div>
         </div>
     </div>

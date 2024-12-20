@@ -6,11 +6,11 @@
 
 @section("title","Hesap Ayarları")
 @section("description")
-    {{$setting->description}}
+    {{$setting->description??"---"}}
 @endsection
 
 @section("keywords")
-    {{$setting->keywords}}
+    {{$setting->keywords??"---"}}
 @endsection
 
 @section("content")

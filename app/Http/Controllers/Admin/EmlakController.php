@@ -127,6 +127,7 @@ class EmlakController extends Controller
 
 
         switch ($emlak->kategori->parentid) {
+
             case Category::ISYERI:
             case Category::BINA:
             case Category::DEVREMULK:

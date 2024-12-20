@@ -6,11 +6,11 @@
 
 @section("title", $category->title . " İlanları")
 @section("description")
-    {{$setting->description}}
+    {{$setting->description??"---"}}
 @endsection
 
 @section("keywords")
-    {{$setting->keywords}}
+    {{$setting->keywords??"---"}}
 @endsection
 
 @section("content")
@@ -38,17 +38,12 @@
                                                 class="fa fa-search"></i>Detay</a>
                                     </div>
                                 </div>
-                                <div class="choose">
-                                    <ul class="nav nav-pills nav-justified">
-                                        <li><a href=""><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-                                        <li><a href=""><i class="fa fa-plus-square"></i>Add to compare</a></li>
-                                    </ul>
-                                </div>
+
                             </div>
                         </div>
 
                         @endforeach
-                    </div><!--features_items-->
+                    </div>
 
                     <div class="pagination-container text-center">
                         <ul class="pagination">

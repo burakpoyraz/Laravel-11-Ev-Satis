@@ -37,14 +37,21 @@ class ImageController extends Controller
      */
     public function store(Request $request,$emlak_id)
     {
-        $image = new Image();
+        if ($request->hasFile('image')) {
+            foreach ($request->file('image') as $file) {
+                // Yeni bir Image modeli oluştur
+                $image = new Image();
 
-        $image->emlak_id=$emlak_id;
-        $image->title=$request->input("title");
+                $image->emlak_id = $emlak_id;
+                $image->title = $request->input("title") ?: "foto";
 
-        $image->image=Storage::putFile("images", $request->file("image"));
+                // Görseli kaydet ve path bilgisini modele ata
+                $image->image = Storage::putFile("images", $file);
 
-        $image->save();
+                // Veritabanına kaydet
+                $image->save();
+            }
+        }
 
         return redirect()->route("adminimagecreate",$emlak_id);
     }

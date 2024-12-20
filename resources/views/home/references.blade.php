@@ -6,11 +6,11 @@
 
 @section("title","Hesap Ayarları")
 @section("description")
-    {{$setting->description}}
+    {{$setting->description ?? "---"}}
 @endsection
 
 @section("keywords")
-    {{$setting->keywords}}
+    {{$setting->keywords ?? "---"}}
 @endsection
 
 @section("content")
@@ -22,7 +22,7 @@
 
                 <div class="col-sm-12">
                     <h2 class="title text-center">REFERANSLAR </h2>
-                    {!!$setting->references!!}
+                    {!! $setting->references ?? "Referanslar henüz oluşturulmadı" !!}
                 </div>
 
             </div>

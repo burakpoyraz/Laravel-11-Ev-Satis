@@ -57,7 +57,7 @@
 
                         <div class="form-group">
                             <label>Resim</label>
-                            <input class="form-control" name="image" type="file">
+                            <input class="form-control" name="image[]" type="file" multiple>
                         </div>
                         <button type="submit" class="btn btn-info">Ekle</button>
 

@@ -43,6 +43,8 @@ Route::get("/kategoriler/{id}/{slug}", [HomeController::class, "categoryilanlar"
 Route::post("/emlakgetir", [HomeController::class, "emlakgetir"])->name('emlakgetir');
 Route::get("searchemlakara/{kelime}", [HomeController::class, "searchemlakara"])->name('searchemlakara');
 Route::get("faq", [HomeController::class, "faq"])->name('faq');
+Route::get("onecikanlar", [HomeController::class, "onecikanlar"])->name('onecikanlar');
+Route::get("yeniilanlar", [HomeController::class, "yeniilanlar"])->name('yeniilanlar');
 
 
 Route::prefix("admin")->group(function () {
@@ -140,6 +142,8 @@ Route::middleware("auth")->prefix("myuser")->group(function () {
     Route::get("/", [UserController::class, 'index'])->name('userhome');
     Route::get("/questions", [UserController::class, 'getquestions'])->name('getquestions');
     Route::get("/deletequestion/{id}", [UserController::class, 'deletequestion'])->name('deletequestion');
+    Route::get("/answers", [UserController::class, 'cevapverileceksorularigetir'])->name('cevapverileceksorularigetir');
+
 
 
     Route::prefix("emlak")->group(function () {
@@ -168,6 +172,6 @@ Route::middleware("auth")->prefix("myuser")->group(function () {
 });
 
 
-//Route::middleware("auth")->prefix("user")->group(function () {
-//    Route::get("/profile", [UserController::class, 'index'])->name('userprofile');
-//});
+Route::middleware("auth")->prefix("user")->group(function () {
+ Route::get("/profile", [UserController::class, 'index'])->name('userprofile');
+});

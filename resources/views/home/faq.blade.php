@@ -5,10 +5,12 @@
     $setting=\App\Http\Controllers\HomeController::settings()
 @endphp
 
-@section("title","SSS - " . $setting->title )
-@section("description"){{$setting->description}}@endsection
+@section("title")
+SSS - {{$setting->title  ?? "---"}}
+@endsection
+@section("description"){{$setting->description ?? "---"}}@endsection
 
-@section("keywords"){{$setting->keywords}}@endsection
+@section("keywords"){{$setting->keywords ?? "---"}}@endsection
 
 @section("header_js")
 

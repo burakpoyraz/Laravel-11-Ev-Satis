@@ -6,9 +6,9 @@
 @endphp
 
 @section("title","Hesap Ayarları")
-@section("description"){{$setting->description}}@endsection
+@section("description"){{$setting->description??"---"}}@endsection
 
-@section("keywords"){{$setting->keywords}}@endsection
+@section("keywords"){{$setting->keywords??"---"}}@endsection
 
 @section("content")
 

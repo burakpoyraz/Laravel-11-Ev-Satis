@@ -18,7 +18,6 @@ class CategorySeeder extends Seeder
             "Konut",
             "Is Yeri",
             "Arsa",
-            "Bina",
             "Devre Mülk",
             "Turistik Tesis"
     ];
@@ -30,7 +29,6 @@ class CategorySeeder extends Seeder
                 'keywords' => $kategori . ' ilanları',
                 'description' => $kategori . ' kategorisi ilanları',
                 'slug' => Str::slug($kategori),
-
                 'status' => "True"
             ]);
         }
