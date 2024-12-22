@@ -1,6 +1,6 @@
 @extends("layouts.admin")
 
-@section("title","Admin Paneli - Kategoriler    ")
+@section("title","Admin Paneli - Ayarlar    ")
 @section("header_js")
 
 

@@ -57,6 +57,7 @@ class MessageController extends Controller
     public function update(Request $request, Message $message, $id)
     {
         try {
+         //   dd($request->input('note'));
             $message = Message::find($id);
             $message->note = $request->input('note');
             $message->status = "Old";

@@ -4,10 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Models\Review;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+
+    public static function sorucevaplarlistesi(){
+
+
+
+
+
+    }
 
 
     public function getquestions()
@@ -35,9 +45,44 @@ class UserController extends Controller
 
         $cevapverileceksorular = Review::whereRelation('emlak', 'userid', Auth::id())
             ->with('emlak') // İlgili emlak bilgilerini de yükler
+            ->orderBy('created_at', 'desc')
             ->get();
 
         return view("home.answers", compact("cevapverileceksorular"));
+
+    }
+
+    public function editanswerquestion($id)
+    {
+
+        $review=Review::find($id);
+
+        if ($review->status=="False") {
+            $review->status = "True"; //okundu;
+            $review->save();
+        }
+
+
+        return view("home.user_edit_answer_question", compact("review"));
+
+
+    }
+
+    public function storeanswerquestion(Request $request,$id){
+
+
+        $review = Review::find($id);
+        $review->answer = $request->input("answer");
+        $review->answered_at =Carbon::now();
+        $review->status="CV"; //cevapVerildi;
+        $review->save();
+
+
+
+        return  "<script>
+                window.close();
+            </script>";
+
 
     }
 

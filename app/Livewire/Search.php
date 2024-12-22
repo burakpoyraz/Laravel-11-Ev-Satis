@@ -27,7 +27,10 @@ class Search extends Component
 
     public function render()
     {
-        $datalist = Emlak::where('title', 'LIKE', '%' . $this->search . '%')->limit(10)->get();
+        $datalist = Emlak::where(function ($query) {
+            $query->where('title', 'LIKE', '%' . $this->search . '%')
+                ->orWhere('city', 'LIKE', '%' . $this->search . '%');
+        })->limit(10)->get();
 
 
         return view('livewire.search', [

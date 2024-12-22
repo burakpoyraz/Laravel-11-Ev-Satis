@@ -6,11 +6,11 @@
 
     100% To use For Personal And Commercial Use.
     IN EXCHANGE JUST GIVE US CREDITS AND TELL YOUR FRIENDS ABOUT US
-   
+
     ========================================================  */
 
 /*==============================================
-    MAIN BOX  STYLES    
+    MAIN BOX  STYLES
     =============================================*/
 .main-box {
     text-align:center;
@@ -40,7 +40,7 @@
         text-transform:uppercase;
     }
 /*==============================================
-    CHAT WINDOW  STYLES    
+    CHAT WINDOW  STYLES
     =============================================*/
 
 .chat-widget-main {
@@ -57,7 +57,7 @@
     border-top-color: #6792d5;
     border-width: 15px;
     margin-left: -15px;
-   
+
 }
 
 .chat-widget-left {
@@ -70,7 +70,7 @@
     position: relative;
     border: 1px solid #6792d5;
     font-size:14px;
-   
+
 }
 .chat-widget-right:after {
     top: 100%;
@@ -93,7 +93,7 @@
     position: relative;
     border: 1px solid #d51111;
     font-size:14px;
-    
+
 }
 
 .chat-widget-name-left {
@@ -113,7 +113,7 @@
     text-align:right;
     font-weight:900;
     padding-bottom:20px;
-    
+
 
 }
 
@@ -190,8 +190,8 @@ background-color: #929292;
     =====================================================*/
 
 #port-folio {
-    padding-top: 10px; 
-    padding-bottom: 100px; 
+    padding-top: 10px;
+    padding-bottom: 100px;
 }
 .portfolio-item {
     border:1px solid #000;
@@ -204,11 +204,11 @@ background-color: #929292;
     }
 
 .portfolio-item .overlay {
-   
+
   background-color: #000;
   text-align: center;
   padding-bottom:30px;
-  
+
 }
 
 /*==========================================
@@ -238,9 +238,153 @@ ul#filters {
 		-webkit-box-sizing: border-box;
 		-moz-box-sizing: border-box;
 		-o-box-sizing: border-box;
-		width: 100%;		
+		width: 100%;
         opacity:.2;
 		float:left;
 		overflow:hidden;
 	}
-	
+
+.ilan-box {
+    background-color: #ffefd5;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    min-height: 230px;
+}
+
+.ilan-box a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.ilan-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.ilan-icon i {
+    color: #ff5722;
+}
+
+.ilan-title {
+    text-align: center;
+    font-weight: bold;
+    color: #333;
+}
+
+.ilan-stats {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 15px;
+}
+
+.ilan-stats li {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.ilan-approved {
+    color: #4caf50;
+}
+
+.ilan-pending {
+    color: #ff9800;
+}
+
+/* Kullanıcılar ve Ziyaretçiler */
+.user-box {
+    background-color: #e8f5e9;
+}
+
+.user-icon i {
+    color: #3f51b5;
+}
+
+.user-title {
+    color: #2e7d32;
+}
+
+/* Ziyaretçi Kutusu */
+.visitor-box {
+    background-color: #e3f2fd;
+}
+
+.visitor-title {
+    color: #0288d1;
+}
+
+/* İkon Kutuları */
+.icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.icon-container i {
+    color: #ff5722;
+}
+
+/* Başlık Stilleri */
+h5 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+/* İlan ve Kullanıcı Listesi */
+.stats-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.stats-list li {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+/* Durum Etiketleri */
+.ilan-approved, .user-online, .user-new-today, .visitor-today {
+    color: #4caf50;
+    font-weight: bold;
+}
+
+.ilan-pending, .user-new-week, .visitor-week, .visitor-month {
+    color: #ff9800;
+    font-weight: bold;
+}
+
+/* Son Eklenenler */
+.recent-box {
+    background-color: #e8f5e9;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.recent-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #2e7d32;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.recent-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.recent-list li {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #555;
+    text-align: left;
+}

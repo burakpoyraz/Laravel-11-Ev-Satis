@@ -45,6 +45,7 @@ Route::get("searchemlakara/{kelime}", [HomeController::class, "searchemlakara"])
 Route::get("faq", [HomeController::class, "faq"])->name('faq');
 Route::get("onecikanlar", [HomeController::class, "onecikanlar"])->name('onecikanlar');
 Route::get("yeniilanlar", [HomeController::class, "yeniilanlar"])->name('yeniilanlar');
+Route::get("filtele", [HomeController::class, "filter"])->name('filter');
 
 
 Route::prefix("admin")->group(function () {
@@ -143,7 +144,9 @@ Route::middleware("auth")->prefix("myuser")->group(function () {
     Route::get("/questions", [UserController::class, 'getquestions'])->name('getquestions');
     Route::get("/deletequestion/{id}", [UserController::class, 'deletequestion'])->name('deletequestion');
     Route::get("/answers", [UserController::class, 'cevapverileceksorularigetir'])->name('cevapverileceksorularigetir');
+    Route::get("/editanswerquestion/{id}", [UserController::class, 'editanswerquestion'])->name('editanswerquestion');
 
+    Route::post("/answerquestion/{id}", [UserController::class, 'storeanswerquestion'])->name('storeanswerquestion');
 
 
     Route::prefix("emlak")->group(function () {

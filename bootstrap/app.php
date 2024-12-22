@@ -15,6 +15,7 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->redirectGuestsTo(fn (Request $request) => route('adminlogin'));
+
         $middleware->alias([
             "admin"=> CheckAdmin::class,
         ]);

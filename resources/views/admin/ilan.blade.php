@@ -1,6 +1,6 @@
 @extends("layouts.admin")
 
-@section("title","Admin Paneli - Kategoriler    ")
+@section("title","Admin Paneli - İlanlar    ")
 
 @section("content")
     <div class="row">

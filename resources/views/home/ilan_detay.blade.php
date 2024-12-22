@@ -256,6 +256,24 @@
                                                             {{$rs->question}}
                                                         </p>
                                                     </div>
+                                                    @if($rs->answer)
+                                                        <div class="message-item admin-message border-top mt-3 pt-2" style="margin-left: 20px; padding: 10px; background-color: #f9f9f9; border-left: 4px solid #28a745;">
+                                                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                                                <div class="message-sender fw-bold text-success">
+                                                                    <i class="fa fa-user"></i> <i class="fa fa-check-circle text-success me-2"></i> Satıcının Cevabı
+                                                                </div>
+                                                                <small class="text-muted">
+                                                                    <i class="fa fa-clock-o me-1"></i> {{ $rs->answered_at ? $rs->answered_at->format('H:i') : '' }}
+                                                                    <i class="fa fa-calendar-o ms-2 me-1"></i> {{ $rs->answered_at ? $rs->answered_at->locale('tr')->translatedFormat('d F Y') : '' }}
+                                                                </small>
+                                                            </div>
+                                                            <div class="message-bubble admin-bubble">
+                                                                <p class="message-text mb-0">
+                                                                    {{$rs->answer}}
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    @endif
                                                 </div>
                                             @endforeach
                                         </div>

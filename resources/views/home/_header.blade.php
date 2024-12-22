@@ -17,16 +17,16 @@
                     <div class="social-icons pull-right">
                         <ul class="nav navbar-nav">
                             @if($setting && $setting->facebook)
-                                <li><a href="{{$setting->facebook}}"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="{{$setting->facebook}}" target="_blank"><i class="fa fa-facebook"></i></a></li>
                             @endif
                             @if($setting && $setting->instagram)
-                                <li><a href="{{$setting->instagram}}"><i class="fa fa-instagram"></i></a></li>
+                                <li><a href="{{$setting->instagram}}" target="_blank"><i class="fa fa-instagram"></i></a></li>
                             @endif
                             @if($setting && $setting->twitter)
-                                <li><a href="{{$setting->twitter}}"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="{{$setting->twitter}}" target="_blank"><i class="fa fa-twitter"></i></a></li>
                             @endif
                             @if($setting && $setting->youtube)
-                                <li><a href="{{$setting->youtube}}"><i class="fa fa-youtube"></i></a></li>
+                                <li><a href="{{$setting->youtube}}" target="_blank"><i class="fa fa-youtube"></i></a></li>
                             @endif
                         </ul>
                     </div>

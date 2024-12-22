@@ -15,6 +15,33 @@ use Illuminate\Support\Facades\Auth;
 class HomeController extends Controller
 {
 
+    private static $iller = [
+        'Adana', 'Adıyaman', 'Afyonkarahisar', 'Ağrı', 'Amasya', 'Ankara',
+        'Antalya', 'Artvin', 'Aydın', 'Balıkesir', 'Bilecik', 'Bingöl',
+        'Bitlis', 'Bolu', 'Burdur', 'Bursa', 'Çanakkale', 'Çankırı',
+        'Çorum', 'Denizli', 'Diyarbakır', 'Edirne', 'Elazığ', 'Erzincan',
+        'Erzurum', 'Eskişehir', 'Gaziantep', 'Giresun', 'Gümüşhane',
+        'Hakkari', 'Hatay', 'Isparta', 'Mersin', 'İstanbul', 'İzmir',
+        'Kars', 'Kastamonu', 'Kayseri', 'Kırklareli', 'Kırşehir',
+        'Kocaeli', 'Konya', 'Kütahya', 'Malatya', 'Manisa',
+        'Kahramanmaraş', 'Mardin', 'Muğla', 'Muş', 'Nevşehir', 'Niğde',
+        'Ordu', 'Rize', 'Sakarya', 'Samsun', 'Siirt', 'Sinop', 'Sivas',
+        'Tekirdağ', 'Tokat', 'Trabzon', 'Tunceli', 'Şanlıurfa', 'Uşak',
+        'Van', 'Yozgat', 'Zonguldak', 'Aksaray', 'Bayburt', 'Karaman',
+        'Kırıkkale', 'Batman', 'Şırnak', 'Bartın', 'Ardahan', 'Iğdır',
+        'Yalova', 'Karabük', 'Kilis', 'Osmaniye', 'Düzce'
+    ];
+
+    public static function getiller()
+    {
+        $illistesi=self::$iller;
+
+        sort($illistesi);
+
+        return $illistesi;
+    }
+
+
     public static function settings()
     {
 
@@ -25,6 +52,7 @@ class HomeController extends Controller
     {
         return Category::where("parentid", 0)->with("children")->get();
     }
+
 
     public function index()
     {
@@ -174,7 +202,9 @@ class HomeController extends Controller
     public function searchemlakara($kelime)
     {
 
-        $emlaks = Emlak::where("title", "like", "%" . $kelime . "%")->get();
+        $emlaks = Emlak::where("title", "like", "%" . $kelime . "%")
+            ->orWhere("city", "like", "%" . $kelime . "%")
+            ->get();
 
         return view('home.search_ilanlar', compact('emlaks', 'kelime'));
 
@@ -199,6 +229,39 @@ class HomeController extends Controller
     {
         $ilanlar= Emlak::select("id", "title", "image", "fiyati", "slug", "categoryid", "city", "metrekare_toplam_alan")->latest()->take(15)->get();
         return view('home.soneklenen_ilan', compact( 'ilanlar'));
+    }
+
+    public function filter(Request $request)
+    {
+        $query = Emlak::query();
+
+
+        if ($request->filled('min_price')) {
+            $query->where('fiyati', '>=', $request->min_price);
+        }
+
+        if ($request->filled('max_price')) {
+            $query->where('fiyati', '<=', $request->max_price);
+        }
+
+
+        if ($request->filled('city')) {
+            $query->where('city', 'like', '%' . $request->city . '%');
+        }
+
+
+        if ($request->filled('min_size')) {
+            $query->where('metrekare_toplam_alan', '>=', $request->min_size);
+        }
+
+        if ($request->filled('max_size')) {
+            $query->where('metrekare_toplam_alan', '<=', $request->max_size);
+        }
+
+        $ilanlar = $query->get();
+
+        return view('home.filtrelenmis_ilan', compact('ilanlar'));
+
     }
 
 

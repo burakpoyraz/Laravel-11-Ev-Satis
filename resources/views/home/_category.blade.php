@@ -1,6 +1,7 @@
 @php
 
-    $parentCategories=\App\Http\Controllers\HomeController::categoryList()
+    $parentCategories=\App\Http\Controllers\HomeController::categoryList();
+    $iller=\App\Http\Controllers\HomeController::getiller()
 
 @endphp
 
@@ -33,13 +34,54 @@
 
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h4 class="panel-title"><a href="{{route("categoryilanlar",["id"=>$rs->id,"slug"=>$rs->slug])}}">{{$rs->title}}</a></h4>
+                            <h4 class="panel-title"><a
+                                        href="{{route("categoryilanlar",["id"=>$rs->id,"slug"=>$rs->slug])}}">{{$rs->title}}</a>
+                            </h4>
                         </div>
                     </div>
                 @endif
 
-                    @endforeach
+            @endforeach
 
         </div><!--/category-products-->
+
+
+        <h2>FİLTRELER</h2>
+        <form method="GET" action="{{route("filter")}}">
+
+            <div class="form-group">
+                <label for="min_price">Minimum Fiyat</label>
+                <input type="number" name="min_price" id="min_price" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="max_price">Maksimum Fiyat</label>
+                <input type="number" name="max_price" id="max_price" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="city">Şehir</label>
+                <select name="city" id="city" class="form-control">
+                    <option value="">Tüm Şehirler</option>
+                    @foreach($iller as $il)
+                    <option value="{{$il}}">{{$il}}</option>
+                    @endforeach
+                </select>
+
+            </div>
+
+            <div class="form-group">
+                <label for="min_size">Minimum Metrekare</label>
+                <input type="number" name="min_size" id="min_size" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="max_size">Maksimum Metrekare</label>
+                <input type="number" name="max_size" id="max_size" class="form-control">
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">Filtrele</button>
+        </form>
+
     </div>
 </div>

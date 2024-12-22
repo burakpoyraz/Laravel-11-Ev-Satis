@@ -30,48 +30,69 @@
                                     {{session("message")}}
                                 </div>
                             @endif
-                            <table class="table table-bordered table-striped table-hover">
-                                <thead class="table-dark">
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Emlak</th>
-                                    <th>Konu</th>
-                                    <th>Soru</th>
-                                    <th>IP Adresi</th>
-                                    <th>Durum</th>
-                                    <th>Cevap</th>
-                                    <th>Cevaplanma Zamanı</th>
-                                    <th>Oluşturulma Tarihi</th>
-                                    <th></th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @foreach($cevapverileceksorular as $soru)
+                            @if(!empty($cevapverileceksorular) && $cevapverileceksorular->count() > 0)
+                                <table class="table table-bordered table-striped table-hover">
+                                    <thead class="table-dark">
                                     <tr>
-                                        <td>{{ $soru->id }}</td>
-                                        <td>
-                                            <a href="{{route("ilan",["id"=>$soru->emlak->id, "slug"=>$soru->emlak->slug])}}"> {{ $soru->emlak->title }}</a>
-                                        </td>
-                                        <td>{{ $soru->subject }}</td>
-                                        <td>{{ $soru->question }}</td>
-                                        <td>{{ $soru->ip }}</td>
-                                        <td>{{ $soru->status }}</td>
-                                        <td>{{ $soru->answer ?? 'Henüz cevaplandırılmadı' }}</td>
-                                        <td>{{ $soru->answered_at ?? 'Cevap yok' }}</td>
-                                        <td>{{ $soru->created_at->format('d.m.Y H:i')}}</td>
-                                        <td>
-                                            <a href="{{route("homeemlakedit",["id"=>$rs->id])}}"
-                                               class="btn btn-sm btn-info"> <i class="fa fa-pencil"
-                                                                               aria-hidden="true"></i></a>
-                                            <a
-                                                href="{{route("deletequestion",["id"=>$soru->id])}}"
-                                                style="margin-left: 25px" class="btn btn-sm btn-danger"
-                                                onclick="return confirm('Bu soruyu silmek istediğinize emin misiniz?')"><span class="glyphicon glyphicon-trash"></span> Sil</a></td>
 
+                                        <th>Emlak</th>
+                                        <th>Konu</th>
+                                        <th>Soru</th>
+
+
+                                        <th>Cevap</th>
+                                        <th>Cevaplanma Zamanı</th>
+                                        <th>Oluşturulma Tarihi</th>
+                                        <th>Durum</th>
+                                        <th></th>
                                     </tr>
-                                @endforeach
-                                </tbody>
-                            </table>
+                                    </thead>
+                                    <tbody>
+                                    @foreach($cevapverileceksorular as $soru)
+                                        <tr>
+
+                                            <td>
+                                                <a href="{{route("ilan",["id"=>$soru->emlak->id, "slug"=>$soru->emlak->slug])}}"> {{ $soru->emlak->title }}</a>
+                                            </td>
+                                            <td>{{ $soru->subject }}</td>
+                                            <td>{{ $soru->question }}</td>
+
+
+                                            <td>{{ $soru->answer ?? 'Henüz cevaplandırılmadı' }}</td>
+                                            <td>{{ $soru->answered_at ? $soru->answered_at->format('d.m.Y H:i') : 'Cevap yok' }}</td>
+                                            <td>{{ $soru->created_at->format('d.m.Y H:i')}}</td>
+                                            <td>
+                                                @if($soru->status=="False")
+                                                    Okunmadı
+                                                @elseif($soru->status=="True")
+                                                    Okundu
+                                                @elseif($soru->status=="CV")
+                                                    Cevap Verildi
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <a href="{{route("editanswerquestion",["id"=>$soru->id])}}"
+                                                   class="btn btn-sm btn-info" style="width: 90px"
+                                                   onclick="return !window.open(this.href,'','top=50 left=100 width=1100,height=700')">
+                                                    <i class="fa fa-pencil"
+                                                       aria-hidden="true"></i> Cevap Ver</a>
+                                                <a
+                                                    href="{{route("deletequestion",["id"=>$soru->id])}}"
+                                                    class="btn btn-sm btn-danger"
+                                                    onclick="return confirm('Bu soruyu silmek istediğinize emin misiniz?')"
+                                                    style="width: 90px"><span class="glyphicon glyphicon-trash"></span>
+                                                    Sil</a></td>
+
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            @else
+                                <div class="alert alert-info text-center">
+                                    <i class="bi bi-info-circle me-2"></i>
+                                    İlanlarınıza ait henüz size gönderilen soru bulunmamaktadır.
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>

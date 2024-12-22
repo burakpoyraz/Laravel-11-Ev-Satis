@@ -36,6 +36,7 @@
                             <a href="{{route("homeemlakcreate")}}" class="btn btn-primary"><i
                                     class="glyphicon glyphicon-plus"></i> İlan Ekle</a>
                         </div>
+                        @if(!empty($emlaks) && $emlaks->count() > 0)
                         <table class="table table-bordered table-striped table-hover">
                             <thead class="table-dark">
                             <tr>
@@ -93,6 +94,12 @@
                             @endforeach
                             </tbody>
                         </table>
+                        @else
+                            <div class="alert alert-info text-center">
+                                <i class="bi bi-info-circle me-2"></i>
+                                Eklemiş olduğunuz ilan bulunmamaktadır.
+                            </div>
+                        @endif
                     </div>
 
 

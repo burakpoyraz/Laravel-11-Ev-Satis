@@ -8,6 +8,10 @@ class Review extends Model
 {
     protected $table = 'reviews';
 
+    protected $casts = [
+        'answered_at' => 'datetime'
+    ];
+
     protected $fillable = [
         "emlakid",
         "userid",
@@ -19,11 +23,13 @@ class Review extends Model
         "answered_at"
     ];
 
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo(User::class, 'userid', 'id');
     }
 
-    public function emlak(){
-        return $this->belongsTo(Emlak::class,'emlakid', 'id');
+    public function emlak()
+    {
+        return $this->belongsTo(Emlak::class, 'emlakid', 'id');
     }
 }

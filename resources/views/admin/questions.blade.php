@@ -53,7 +53,13 @@
                                     <td>{{ $soru->subject }}</td>
                                     <td>{{ $soru->question }}</td>
                                     <td>{{ $soru->ip }}</td>
-                                    <td>{{ $soru->status }}</td>
+                                    <td> @if($soru->status=="False")
+                                            Okunmadı
+                                        @elseif($soru->status=="True")
+                                            Okundu
+                                        @elseif($soru->status=="CV")
+                                            Cevap Verildi
+                                        @endif</td>
                                     <td>{{ $soru->answer ?? 'Henüz cevaplandırılmadı' }}</td>
                                     <td>{{ $soru->answered_at ?? 'Cevap yok' }}</td>
                                     <td>{{ $soru->created_at->format('d.m.Y H:i')}}</td>

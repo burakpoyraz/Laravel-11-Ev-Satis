@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use phpDocumentor\Reflection\Types\This;
 
 class EmlakController extends Controller
 {
@@ -54,10 +55,12 @@ class EmlakController extends Controller
         'Isı Pompası'
     ];
 
+
     public function __construct()
     {
         sort($this->iller);
     }
+
 
     /**
      * Display a listing of the resource.

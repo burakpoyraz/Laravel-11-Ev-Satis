@@ -1,7 +1,7 @@
 @php use Illuminate\Support\Facades\Storage; @endphp
 @extends("layouts.admin")
 
-@section("title","Admin Paneli - Sorular    ")
+@section("title","Admin Paneli - Kullanıcılar    ")
 
 @section("content")
     <div class="row">
